@@ -10,7 +10,27 @@ public class Main extends Application {
         launch(args);
     }
 
-    public void start(Stage primaryStage) throws Exception {
+    public void start(Stage primaryStage) throws Exception{
         Model model = new Model();
+        Presenter presenter = new Presenter(model);
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
+        loader.setController(presenter);
+
+        GridPane root = loader.load();
+
+
+        initScene(primaryStage, root);
+
+        primaryStage.setTitle("TIc Tac Toe");
+        primaryStage.show();
+    }
+
+    private void initScene(Stage primaryStage, GridPane root) {
+        final int width = 600;
+        final int height = 400;
+        Scene scene = new Scene(root, width, height);
+        scene.getStylesheets().add("style.css");
+        primaryStage.setScene(scene);
     }
 }

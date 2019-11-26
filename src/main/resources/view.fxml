@@ -32,17 +32,17 @@
         <gridLinesVisible>false</gridLinesVisible>
 
         <!-- Table-head -->
-        <Text fx:id="table-head" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.valignment="CENTER">W</Text>
+        <Text styleClass="table-header" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.valignment="CENTER">W</Text>
 
         <!-- Player 1 -->
-        <Text GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER">x</Text>
-        <Text GridPane.columnIndex="1" GridPane.rowIndex="1">Spieler 1</Text>
-        <Text GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER">4</Text>
+        <Text styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER">x</Text>
+        <Text styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="1">Spieler 1</Text>
+        <Text styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER">4</Text>
 
         <!-- Player 2 -->
-        <Text GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="CENTER">o</Text>
-        <Text GridPane.columnIndex="1" GridPane.rowIndex="2">Spieler 2</Text>
-        <Text GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="CENTER">4</Text>
+        <Text styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="CENTER">o</Text>
+        <Text styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="2">Spieler 2</Text>
+        <Text styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="CENTER">4</Text>
 
         <!-- Menu-Buttons -->
         <Button styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neustart" />

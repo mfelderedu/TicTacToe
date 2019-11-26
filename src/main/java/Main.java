@@ -18,8 +18,6 @@ public class Main extends Application {
         loader.setController(presenter);
 
         GridPane root = loader.load();
-
-
         initScene(primaryStage, root);
 
         primaryStage.setTitle("TIc Tac Toe");
@@ -30,6 +28,7 @@ public class Main extends Application {
         final int width = 700;
         final int height = 450;
         Scene scene = new Scene(root, width, height);
+        primaryStage.setResizable(false);
         scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
     }

@@ -27,25 +27,25 @@
 #a1 {
     -fx-border-width: 0 1 1 0;
 }
-#a2 {
+#b1 {
     -fx-border-width: 0 1 1 1;
 }
-#a3 {
+#c1 {
     -fx-border-width: 0 0 1 1;
 }
-#b1 {
+#a2 {
     -fx-border-width: 1 1 1 0;
 }
 #b2 {
     -fx-border-width: 1;
 }
-#b3 {
+#c2 {
     -fx-border-width: 1 0 1 1;
 }
-#c1 {
+#a3 {
     -fx-border-width: 1 1 0 0;
 }
-#c2 {
+#b3 {
     -fx-border-width: 1 1 0 1;
 }
 #c3 {
@@ -91,4 +91,7 @@
 }
 .button-exit {
     -fx-fill: lightred;
+}
+.test {
+    -fx-fill: red;
 }

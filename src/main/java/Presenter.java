@@ -19,7 +19,6 @@ public class Presenter implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-        // add change listener
     }
 
     private void selectedNodeHandler(Observable observable) {

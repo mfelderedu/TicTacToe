@@ -21,11 +21,27 @@ public class Presenter implements Initializable {
 
     }
 
-    private void selectedNodeHandler(Observable observable) {
+    public void countWins() {
 
     }
 
-    public void submitButtonHandler(ActionEvent actionEvent) {
+    public void clickOnField() {
+
+    }
+
+    public void clickOnRestart() {
+
+    }
+
+    public void clickOnNewGame() {
+
+    }
+
+    public void clickOnSettings() {
+
+    }
+
+    public void clickOnExit() {
 
     }
 

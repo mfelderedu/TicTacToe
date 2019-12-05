@@ -2,13 +2,13 @@ public class Player {
     private String name;
     private Sign sign;
 
-    public Player() {
-        sign = Sign.cross;
+    public Player(String name, Sign sign) {
+        this.name = name;
+        this.sign = sign;
     }
 
     public String getName() {
-        //return name;
-        return "foo";
+        return name;
     }
 
     public void setName(String name) {

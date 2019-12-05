@@ -20,7 +20,7 @@ public class Main extends Application {
         GridPane root = loader.load();
         initScene(primaryStage, root);
 
-        primaryStage.setTitle("TIc Tac Toe");
+        primaryStage.setTitle("Tic Tac Toe");
         primaryStage.show();
     }
 

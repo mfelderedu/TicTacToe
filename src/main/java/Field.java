@@ -1,10 +1,10 @@
 public class Field {
-    String name;
+    String id;
     Sign sign;
     boolean occupied;
 
-    public Field(String name) {
-        this.name = name;
+    public Field(String id) {
+        this.id = id;
     }
 
     public Sign getSign() {

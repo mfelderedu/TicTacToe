@@ -29,6 +29,7 @@ public class Presenter implements Initializable {
             Button source = (Button) actionEvent.getSource();
             String id = source.getId();
 
+            game.checkField(id);
         }
     };
 

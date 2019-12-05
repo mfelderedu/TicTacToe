@@ -1,12 +1,16 @@
 import javafx.beans.Observable;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 
 import java.util.*;
 
 public class Game {
+    Map createdFields = new HashMap<String, Field>();
+
     public Game() {
         Player player1 = new Player("Spieler 1", Sign.cross);
         Player player2 = new Player("Spieler 2", Sign.circle);
-
         generateFields();
     }
 
@@ -24,7 +28,15 @@ public class Game {
             String fieldName = String.valueOf(col) + j;
             Field field = new Field(fieldName);
             rows.add(field);
+            createdFields.put(fieldName, field);
         }
         return rows;
     }
+
+    public final void checkField(String id) {
+        createdFields.get(id);
+        
+    }
+
+
 }

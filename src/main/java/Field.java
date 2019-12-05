@@ -2,7 +2,7 @@ public class Field {
     Sign sign;
     boolean occupied;
 
-    public Field() {
+    public Field() { // hoi
 
     }
 

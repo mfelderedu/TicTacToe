@@ -11,8 +11,8 @@ public class Main extends Application {
     }
 
     public void start(Stage primaryStage) throws Exception{
-        Model model = new Model();
-        Presenter presenter = new Presenter(model);
+        Game game = new Game();
+        Presenter presenter = new Presenter(game);
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
         loader.setController(presenter);

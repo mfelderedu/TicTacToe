@@ -9,10 +9,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
-    private final Model model;
+    private final Game game;
 
-    public Presenter(Model model) {
-        this.model = model;
+    public Presenter(Game model) {
+        this.game = model;
     }
 
     @Override

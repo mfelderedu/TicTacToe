@@ -1,13 +1,14 @@
 public class Player {
-    String name;
-    Sign sign;
+    private String name;
+    private Sign sign;
 
     public Player() {
         sign = Sign.cross;
     }
 
     public String getName() {
-        return name;
+        //return name;
+        return "foo";
     }
 
     public void setName(String name) {
@@ -24,4 +25,3 @@ public class Player {
 
 
 }
-//ANnujan

@@ -35,7 +35,7 @@ public class Game {
 
     public final void checkField(String id) {
         createdFields.get(id);
-        
+        this.setOccupied(true);
     }
 
 

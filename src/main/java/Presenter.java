@@ -16,12 +16,19 @@ public class Presenter implements Initializable {
     @FXML private Button a1;
     @FXML private Button b1;
     @FXML private Button c1;
+    @FXML private Button a2;
+    @FXML private Button b2;
+    @FXML private Button c2;
+    @FXML private Button a3;
+    @FXML private Button b3;
+    @FXML private Button c3;
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent actionEvent) {
             Button source = (Button) actionEvent.getSource();
             String id = source.getId();
+
 
         }
     };
@@ -33,6 +40,14 @@ public class Presenter implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         a1.setOnAction(handler);
+        b1.setOnAction(handler);
+        c1.setOnAction(handler);
+        a2.setOnAction(handler);
+        b2.setOnAction(handler);
+        c2.setOnAction(handler);
+        a3.setOnAction(handler);
+        b3.setOnAction(handler);
+        c3.setOnAction(handler);
     }
 
     public void countWins() {

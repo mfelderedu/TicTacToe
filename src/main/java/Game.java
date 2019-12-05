@@ -1,6 +1,5 @@
 import javafx.beans.Observable;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 import java.util.*;
@@ -34,8 +33,14 @@ public class Game {
     }
 
     public final void checkField(String id) {
-        createdFields.get(id);
-        this.setOccupied(true);
+        Field field = new Field(id);
+        Object test = createdFields.get(id);
+        field.setOccupied(true);
+    }
+
+    public final Sign setSign() {
+        //return Sign sign;
+        return null;
     }
 
 

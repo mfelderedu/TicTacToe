@@ -23,6 +23,7 @@ public class Presenter implements Initializable {
     @FXML private Button b2;
     @FXML private Button c2;
 
+
     EventHandler<ActionEvent> handler = new EventHandler<>() {
         @Override
         public void handle(ActionEvent actionEvent) {
@@ -30,11 +31,13 @@ public class Presenter implements Initializable {
             String id = source.getId();
 
             game.checkField(id);
+            //game.getPlayerSign().addListener(this::signStringListener);
+
         }
     };
 
-    public Presenter(Game model) {
-        this.game = model;
+    public Presenter(Game game) {
+        this.game = game;
     }
 
     @Override
@@ -48,6 +51,14 @@ public class Presenter implements Initializable {
         a2.setOnAction(handler);
         b2.setOnAction(handler);
         c2.setOnAction(handler);
+    }
+
+    public void setSignToField(String id) {
+
+    }
+
+    private void signStringListener(Observable observable) {
+        Sign value = game.setSign();
     }
 
     public void countWins() {

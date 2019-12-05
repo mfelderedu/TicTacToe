@@ -24,31 +24,31 @@
 }
 
 /* Einzelne Felder */
-#a1 {
+#a0 {
     -fx-border-width: 0 1 1 0;
 }
-#b1 {
+#b0 {
     -fx-border-width: 0 1 1 1;
 }
-#c1 {
+#c0 {
     -fx-border-width: 0 0 1 1;
 }
-#a2 {
+#a1 {
     -fx-border-width: 1 1 1 0;
 }
-#b2 {
+#b1 {
     -fx-border-width: 1;
 }
-#c2 {
+#c1 {
     -fx-border-width: 1 0 1 1;
 }
-#a3 {
+#a2 {
     -fx-border-width: 1 1 0 0;
 }
-#b3 {
+#b2 {
     -fx-border-width: 1 1 0 1;
 }
-#c3 {
+#c2 {
     -fx-border-width: 1 0 0 1;
 }
 

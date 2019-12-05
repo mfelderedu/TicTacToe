@@ -1,9 +1,10 @@
 public class Field {
+    String name;
     Sign sign;
     boolean occupied;
 
-    public Field() { // hoi
-
+    public Field(String name) {
+        this.name = name;
     }
 
     public Sign getSign() {

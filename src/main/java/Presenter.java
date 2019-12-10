@@ -27,6 +27,7 @@ public class Presenter implements Initializable {
     @FXML private Button c2;
 
     HashMap<String, Button> test = new HashMap<String, Button>();
+    int count = 0;
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
@@ -37,11 +38,13 @@ public class Presenter implements Initializable {
 
             String field = game.checkField(id);
             Button pressedButton = test.get(field);
-            pressedButton.setText("x");
-        }
-
-        private void setSignToField(Observable observable) {
-            a1.setText("x");
+            if(count == 0) {
+                pressedButton.setText("x");
+                count = 1;
+            } else {
+                pressedButton.setText("o");
+                count = 0;
+            }
         }
 
     };

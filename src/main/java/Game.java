@@ -38,12 +38,4 @@ public class Game {
         return field.id; //clickfunktion
     }
 
-    public final String getSign() {
-        return sign.get();
-    }
-
-    public StringProperty signProperty() {
-        return sign;
-    }
-
 }

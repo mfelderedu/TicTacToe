@@ -26,7 +26,7 @@ public class Presenter implements Initializable {
     @FXML private Button b2;
     @FXML private Button c2;
 
-    HashMap<String, Button> test = new HashMap<String, Button>();
+    HashMap<String, Button> contentMap = new HashMap<String, Button>();
     int count = 0;
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
@@ -37,7 +37,7 @@ public class Presenter implements Initializable {
             String id = source.getId();
 
             String field = game.checkField(id);
-            Button pressedButton = test.get(field);
+            Button pressedButton = contentMap.get(field);
             if(count == 0) {
                 pressedButton.setText("x");
                 count = 1;
@@ -64,15 +64,15 @@ public class Presenter implements Initializable {
         a2.setOnAction(handler);
         b2.setOnAction(handler);
         c2.setOnAction(handler);
-        test.put("a0", a0);
-        test.put("b0", b0);
-        test.put("c0", c0);
-        test.put("a1", a1);
-        test.put("b1", b1);
-        test.put("c1", c1);
-        test.put("a2", a2);
-        test.put("b2", b2);
-        test.put("c2", c2);
+        contentMap.put("a0", a0);
+        contentMap.put("b0", b0);
+        contentMap.put("c0", c0);
+        contentMap.put("a1", a1);
+        contentMap.put("b1", b1);
+        contentMap.put("c1", c1);
+        contentMap.put("a2", a2);
+        contentMap.put("b2", b2);
+        contentMap.put("c2", c2);
     }
 
     public void countWins() {

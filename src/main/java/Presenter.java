@@ -1,6 +1,3 @@
-import javafx.beans.InvalidationListener;
-import javafx.beans.Observable;
-import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -8,9 +5,9 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
-import javax.swing.*;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
@@ -27,7 +24,6 @@ public class Presenter implements Initializable {
     @FXML private Button c2;
 
     HashMap<String, Button> contentMap = new HashMap<String, Button>();
-    int count = 0;
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
@@ -38,13 +34,9 @@ public class Presenter implements Initializable {
 
             String field = game.checkField(id);
             Button pressedButton = contentMap.get(field);
-            if(count == 0) {
-                pressedButton.setText("x");
-                count = 1;
-            } else {
-                pressedButton.setText("o");
-                count = 0;
-            }
+            //Sign p1 = Sign.cross;
+            //pressedButton.setText(String.valueOf(p1));
+            pressedButton.setText(game.getSign(id));
         }
 
     };
@@ -55,6 +47,13 @@ public class Presenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
+        /*
+        for(Map.Entry<String, Button> field : contentMap.entrySet()){
+            field.getValue().setOnAction(handler);
+            contentMap.put(field.getKey(), field.getValue());
+        }
+         */
         a0.setOnAction(handler);
         b0.setOnAction(handler);
         c0.setOnAction(handler);

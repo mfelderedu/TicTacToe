@@ -44,4 +44,12 @@ public class Game {
         return sign;
     }
 
+    public final char getSign(char sign) {
+        return sign;
+    }
+
+    public StringProperty signProperty() {
+        return sign;
+    }
+
 }

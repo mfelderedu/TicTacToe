@@ -36,7 +36,8 @@ public class Presenter implements Initializable {
             game.checkField(id);
 
             // add change listener
-            game.signProperty().addListener(this::setSignToField);
+            //game.signProperty().addListener(this::setSignToField);
+            game.setSign('x');
         }
 
         private void setSignToField(Observable observable) {

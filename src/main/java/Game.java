@@ -28,6 +28,7 @@ public class Game {
             String fieldName = String.valueOf(col) + j;
             Field field = new Field(fieldName);
             rows.add(field);
+            createdFields.put(fieldName, field);
         }
         return rows;
     }
@@ -39,11 +40,7 @@ public class Game {
         //return field;
     }
 
-    public final String getSign() {
-        return sign.get();
-    }
-
-    public StringProperty signProperty() {
+    public final char setSign(char sign) {
         return sign;
     }
 

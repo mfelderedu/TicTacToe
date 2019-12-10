@@ -35,7 +35,7 @@ public class Game {
     public final String checkField(String id) {
         Field field = this.createdFields.get(id);
         field.setOccupied(true);
-        return field.id;
+        return field.id; //clickfunktion
     }
 
     public final String getSign() {

@@ -32,6 +32,7 @@ public class Presenter implements Initializable {
 
             game.checkField(id);
             //game.getPlayerSign().addListener(this::signStringListener);
+            game.setSign('x');
 
         }
     };
@@ -55,10 +56,6 @@ public class Presenter implements Initializable {
 
     public void setSignToField(String id) {
 
-    }
-
-    private void signStringListener(Observable observable) {
-        Sign value = game.setSign();
     }
 
     public void countWins() {

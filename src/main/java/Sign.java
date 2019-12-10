@@ -1,3 +1,11 @@
 public enum Sign {
-    cross,circle;
+    cross('x'),circle('o');
+    private final char sign;
+    Sign(char sign) {
+        this.sign = sign;
+    }
+
+    public char getSign() {
+        return sign;
+    }
 }

@@ -28,6 +28,7 @@ public class Game {
             Field field = new Field(fieldName);
             rows.add(field);
             createdFields.put(fieldName, field);
+            createdFields.put(field.id, field);
         }
         return rows;
     }
@@ -38,9 +39,8 @@ public class Game {
         field.setOccupied(true);
     }
 
-    public final Sign setSign() {
-        //return Sign sign;
-        return null;
+    public final char setSign(char sign) {
+        return sign;
     }
 
 

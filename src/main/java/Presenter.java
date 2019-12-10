@@ -1,4 +1,6 @@
+import javafx.beans.InvalidationListener;
 import javafx.beans.Observable;
+import javafx.beans.property.StringProperty;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -25,16 +27,22 @@ public class Presenter implements Initializable {
 
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
+
         @Override
         public void handle(ActionEvent actionEvent) {
             Button source = (Button) actionEvent.getSource();
             String id = source.getId();
 
             game.checkField(id);
-            //game.getPlayerSign().addListener(this::signStringListener);
-            game.setSign('x');
 
+            // add change listener
+            game.signProperty().addListener(this::setSignToField);
         }
+
+        private void setSignToField(Observable observable) {
+            a1.setText("x");
+        }
+
     };
 
     public Presenter(Game game) {
@@ -52,10 +60,6 @@ public class Presenter implements Initializable {
         a2.setOnAction(handler);
         b2.setOnAction(handler);
         c2.setOnAction(handler);
-    }
-
-    public void setSignToField(String id) {
-
     }
 
     public void countWins() {

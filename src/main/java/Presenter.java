@@ -10,6 +10,7 @@ import javafx.scene.text.Text;
 
 import javax.swing.*;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
@@ -25,6 +26,7 @@ public class Presenter implements Initializable {
     @FXML private Button b2;
     @FXML private Button c2;
 
+    HashMap<String, Button> test = new HashMap<String, Button>();
 
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
@@ -33,10 +35,9 @@ public class Presenter implements Initializable {
             Button source = (Button) actionEvent.getSource();
             String id = source.getId();
 
-            game.checkField(id);
-
-            // add change listener
-            game.signProperty().addListener(this::setSignToField);
+            String field = game.checkField(id);
+            Button pressedButton = test.get(field);
+            pressedButton.setText("x");
         }
 
         private void setSignToField(Observable observable) {
@@ -60,6 +61,15 @@ public class Presenter implements Initializable {
         a2.setOnAction(handler);
         b2.setOnAction(handler);
         c2.setOnAction(handler);
+        test.put("a0", a0);
+        test.put("b0", b0);
+        test.put("c0", c0);
+        test.put("a1", a1);
+        test.put("b1", b1);
+        test.put("c1", c1);
+        test.put("a2", a2);
+        test.put("b2", b2);
+        test.put("c2", c2);
     }
 
     public void countWins() {

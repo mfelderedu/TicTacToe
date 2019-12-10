@@ -4,14 +4,13 @@ import javafx.beans.property.StringProperty;
 import java.util.*;
 
 public class Game {
-    Map createdFields = new HashMap<String, Field>();
+    HashMap<String, Field> createdFields = new HashMap<String, Field>();
     private StringProperty sign = new SimpleStringProperty();
 
     public Game() {
         Player player1 = new Player("Spieler 1", Sign.cross);
         Player player2 = new Player("Spieler 2", Sign.circle);
         generateCols();
-        createdFields = generateCols();
     }
 
     public final Map<Character, List> generateCols(){
@@ -28,15 +27,15 @@ public class Game {
             String fieldName = String.valueOf(col) + j;
             Field field = new Field(fieldName);
             rows.add(field);
+            createdFields.put(field.id, field);
         }
         return rows;
     }
 
-    public final void checkField(String id) {
-        Field field = new Field(id);
-        Object test = createdFields.get(id);
+    public final String checkField(String id) {
+        Field field = this.createdFields.get(id);
         field.setOccupied(true);
-        //return field;
+        return field.id;
     }
 
     public final String getSign() {

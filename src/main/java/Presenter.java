@@ -7,7 +7,6 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
@@ -29,13 +28,18 @@ public class Presenter implements Initializable {
 
         @Override
         public void handle(ActionEvent actionEvent) {
+            // get button-id
             Button source = (Button) actionEvent.getSource();
             String id = source.getId();
 
+            // check the clicked field
             String field = game.checkField(id);
             Button pressedButton = contentMap.get(field);
+
             //Sign p1 = Sign.cross;
             //pressedButton.setText(String.valueOf(p1));
+
+            // set icon to the field
             pressedButton.setText(game.getSign(id));
         }
 
@@ -53,7 +57,9 @@ public class Presenter implements Initializable {
             field.getValue().setOnAction(handler);
             contentMap.put(field.getKey(), field.getValue());
         }
-         */
+        */
+
+        // set actions on click on field
         a0.setOnAction(handler);
         b0.setOnAction(handler);
         c0.setOnAction(handler);
@@ -63,6 +69,8 @@ public class Presenter implements Initializable {
         a2.setOnAction(handler);
         b2.setOnAction(handler);
         c2.setOnAction(handler);
+
+        // returns sign to field
         contentMap.put("a0", a0);
         contentMap.put("b0", b0);
         contentMap.put("c0", c0);

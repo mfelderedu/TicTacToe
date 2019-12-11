@@ -5,6 +5,9 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import javax.swing.*;
+import java.net.URL;
+
 public class Main extends Application {
     public static void main(String[] args) {
         launch(args);
@@ -29,7 +32,22 @@ public class Main extends Application {
         final int height = 450;
         Scene scene = new Scene(root, width, height);
         scene.getStylesheets().add("style.css");
-        primaryStage.getIcons().add(new Image("icon.png"));
+
+        // Icon
+        String OS = System.getProperty("os.name").toLowerCase();
+        if(OS.startsWith("mac")) {
+            System.getProperties().list(System.out);
+            try {
+                URL iconURL = Main.class.getResource("icon.png");
+                java.awt.Image image = new ImageIcon(iconURL).getImage();
+                com.apple.eawt.Application.getApplication().setDockIconImage(image);
+            } catch (Exception e) {
+            }
+
+        } else {
+            primaryStage.getIcons().add(new Image("icon.png"));
+        }
+
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
     }

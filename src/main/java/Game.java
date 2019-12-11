@@ -7,11 +7,10 @@ public class Game {
         Player player1 = new Player("Spieler 1", Sign.cross);
         Player player2 = new Player("Spieler 2", Sign.circle);
 
-        player1.setSign(Sign.cross);
-        player2.setSign(Sign.circle);
         generateCols();
     }
 
+    // generate field-cols
     public final Map<Character, List> generateCols(){
         Map cols = new HashMap<Character, List>();
         for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
@@ -20,6 +19,7 @@ public class Game {
         return cols;
     }
 
+    // generate rows per col
     public final List<Field> generateFieldRows(char col){
         List rows = new ArrayList<Field>();
         for (int j = 0; j <= 2; j++) {
@@ -31,12 +31,15 @@ public class Game {
         return rows;
     }
 
+    // set Field as Occupied
     public final String checkField(String id) {
         Field field = this.createdFields.get(id);
         field.setOccupied(true);
         return field.id;
     }
 
+    // get the player-icon
+    // dont' work
     public final String getSign(String id) {
         Field field = this.createdFields.get(id);
         String sign = "x";

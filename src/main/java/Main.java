@@ -35,6 +35,7 @@ public class Main extends Application {
 
         // Icon
         String OS = System.getProperty("os.name").toLowerCase();
+        /*
         if(OS.startsWith("mac")) {
             System.getProperties().list(System.out);
             try {
@@ -47,6 +48,8 @@ public class Main extends Application {
         } else {
             primaryStage.getIcons().add(new Image("icon.png"));
         }
+        */
+        primaryStage.getIcons().add(new Image("icon.png"));
 
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

@@ -85,6 +85,9 @@ public class Presenter implements Initializable {
         contentMap.put("a2", a2);
         contentMap.put("b2", b2);
         contentMap.put("c2", c2);
+
+        button_exit.setOnAction(this::exitButtonHandler);
+
     }
 
     public void countWins() {
@@ -107,11 +110,8 @@ public class Presenter implements Initializable {
 
     }
 
-    public void clickOnExit() {
+    private void exitButtonHandler(ActionEvent actionEvent) {
 
     }
-
-
-
 
 }

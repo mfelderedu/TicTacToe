@@ -17,7 +17,9 @@ public class Main extends Application {
         Game game = new Game();
         Presenter presenter = new Presenter(game);
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("view.fxml"));
+        URL resource = getClass().getResource("view.fxml");
+        FXMLLoader loader = new FXMLLoader(resource);
+
         loader.setController(presenter);
 
         GridPane root = loader.load();
@@ -49,7 +51,8 @@ public class Main extends Application {
             primaryStage.getIcons().add(new Image("icon.png"));
         }
         */
-        primaryStage.getIcons().add(new Image("icon.png"));
+        Image systemIcon = new Image("icon.png");
+        primaryStage.getIcons().add(systemIcon);
 
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);

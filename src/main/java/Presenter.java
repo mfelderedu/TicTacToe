@@ -7,12 +7,15 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 import java.util.function.Function;
 
 public class Presenter implements Initializable {
     private final Game game;
+
+    Map buttons = new HashMap<Character, List<Button>>();
 
     @FXML private Button a0;
     @FXML private Button b0;
@@ -47,12 +50,17 @@ public class Presenter implements Initializable {
             //pressedButton.setText(String.valueOf(p1));
 
             // set icon to the field
-            pressedButton.setText(game.getSign(id));
+            //String sign = Sign.cross;
+            Sign sign = game.getActivePlayerSign();
+            //String sign = "x";
+
+            pressedButton.setText(String.valueOf(sign.representationCharacter()));
         }
 
     };
 
     public Presenter(Game game) {
+        //buttons.put("a",0);
         this.game = game;
     }
 
@@ -90,7 +98,6 @@ public class Presenter implements Initializable {
 
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
-        button_settings.setOnAction(this::newGameButtonHandler);
 
     }
 
@@ -106,10 +113,6 @@ public class Presenter implements Initializable {
 
     }
 
-    public void newGameButtonHandler(ActionEvent actionEvent) {
-        game.reset();
-
-    }
 
     public void settingButtonHandler(ActionEvent actionEvent) {
 

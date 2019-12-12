@@ -8,11 +8,11 @@ public class Player {
         this.sign = sign;
     }
 
-    public String getName() {
+    public String getPlayerName() {
         return name;
     }
 
-    public void setName(String name) {
+    public void setPlayerName(String name) {
         this.name = name;
     }
 
@@ -20,16 +20,15 @@ public class Player {
         return sign;
     }
 
-    public void setSign(Sign sign) {
+    public void setPlayerSign(Sign sign) {
         this.sign = sign;
     }
-
 
     public boolean isActive() {
         return active;
     }
 
-    public void setActive(boolean active) {
+    public void setPlayerActive(boolean active) {
         this.active = active;
     }
 }

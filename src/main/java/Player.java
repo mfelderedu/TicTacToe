@@ -1,6 +1,7 @@
 public class Player {
     private String name;
     private Sign sign;
+    private boolean active;
 
     public Player(String name, Sign sign) {
         this.name = name;
@@ -24,4 +25,11 @@ public class Player {
     }
 
 
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
 }

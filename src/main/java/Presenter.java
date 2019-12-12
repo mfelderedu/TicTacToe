@@ -21,6 +21,11 @@ public class Presenter implements Initializable {
     @FXML private Button a2;
     @FXML private Button b2;
     @FXML private Button c2;
+    @FXML private Button button_restart;
+    @FXML private Button button_newgame;
+    @FXML private Button button_settings;
+    @FXML private Button button_exit;
+
 
     HashMap<String, Button> contentMap = new HashMap<String, Button>();
 

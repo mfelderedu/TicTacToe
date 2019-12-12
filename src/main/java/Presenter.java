@@ -119,4 +119,15 @@ public class Presenter implements Initializable {
              Stage stage = (Stage) button_exit.getScene().getWindow();
             stage.close();
     }
+    private void newGameButtonHandler(ActionEvent actionEvent){
+        contentMap.put(" ", a0);
+        contentMap.put(" ", b0);
+        contentMap.put(" ", c0);
+        contentMap.put(" ", a1);
+        contentMap.put(" ", b1);
+        contentMap.put(" ", c1);
+        contentMap.put(" ", a2);
+        contentMap.put(" ", b2);
+        contentMap.put(" ", c2);
+    }
 }

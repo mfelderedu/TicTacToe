@@ -88,6 +88,7 @@ public class Presenter implements Initializable {
         contentMap.put("c2", c2);
 
         button_exit.setOnAction(this::exitButtonHandler);
+        button_newgame.setOnAction(this::newGameButtonHandler);
 
     }
 
@@ -103,7 +104,10 @@ public class Presenter implements Initializable {
 
     }
 
-    public void clickOnNewGame() {
+    public void newGameButtonHandler(ActionEvent actionEvent) {
+        if (actionEvent.getSource()==button_newgame){
+            System.out.println("Thani is the best");
+        }
 
     }
 

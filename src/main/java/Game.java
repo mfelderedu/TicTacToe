@@ -49,4 +49,16 @@ public class Game {
     }
 
 
+    public void reset() {
+        resetfields();
+        resetScores();
+    }
+
+    private void resetScores() {
+
+    }
+
+    private void resetfields() {
+        field.reset();
+    }
 }

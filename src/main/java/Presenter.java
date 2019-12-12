@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.ResourceBundle;
+import java.util.function.Function;
 
 public class Presenter implements Initializable {
     private final Game game;
@@ -89,6 +90,7 @@ public class Presenter implements Initializable {
 
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
+        button_settings.setOnAction(this::newGameButtonHandler);
 
     }
 
@@ -105,13 +107,11 @@ public class Presenter implements Initializable {
     }
 
     public void newGameButtonHandler(ActionEvent actionEvent) {
-        if (actionEvent.getSource()==button_newgame){
-            System.out.println("Thani is the best");
-        }
+        game.reset();
 
     }
 
-    public void clickOnSettings() {
+    public void settingButtonHandler(ActionEvent actionEvent) {
 
     }
 

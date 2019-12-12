@@ -36,7 +36,6 @@ public class Game {
         Field field = this.createdFields.get(id);
         field.setOccupied(true);
         return field.id;
-        // test
     }
 
     // get the player-icon

@@ -2,7 +2,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PageLayout;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,9 +13,28 @@ import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
     private final Game game;
+    public String activeName;
+
     private final Main main;
 
     Map buttons = new HashMap<Character, List<Button>>();
+
+    @FXML private Text active_playername;
+    @FXML private Button a0;
+    @FXML private Button b0;
+    @FXML private Button c0;
+    @FXML private Button a1;
+    @FXML private Button b1;
+    @FXML private Button c1;
+    @FXML private Button a2;
+    @FXML private Button b2;
+    @FXML private Button c2;
+    @FXML private Button button_restart;
+    @FXML private Button button_newgame;
+    @FXML private Button button_settings;
+    @FXML private Button button_exit;
+
+
     HashMap<String, Button> contentMap = new HashMap<String, Button>();
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
@@ -32,30 +50,16 @@ public class Presenter implements Initializable {
 
             //Sign p1 = Sign.cross;
             //pressedButton.setText(String.valueOf(p1));
-
-            // set icon to the field
-            //String sign = Sign.cross;
-            Sign sign = game.getActivePlayerSign();
-            //String sign = "x";
+                // set icon to the field
+                //String sign = Sign.cross;
+                Sign sign = game.getActivePlayerSign();
+                //String sign = "x";
 
             pressedButton.setText(String.valueOf(sign.representationCharacter()));
             game.toggleActivePlayer();
         }
 
     };
-    @FXML private Button a0;
-    @FXML private Button b0;
-    @FXML private Button c0;
-    @FXML private Button a1;
-    @FXML private Button b1;
-    @FXML private Button c1;
-    @FXML private Button a2;
-    @FXML private Button b2;
-    @FXML private Button c2;
-    @FXML private Button button_restart;
-    @FXML private Button button_newgame;
-    @FXML private Button button_settings;
-    @FXML private Button button_exit;
 
     public Presenter(Game game, Main main) {
         //buttons.put("a",0);
@@ -65,6 +69,9 @@ public class Presenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String activeName = game.toggleActivePlayerName();
+        active_playername.setText(activeName);
+
         //Player activePlayer = game.getActivePlayer();
         /*
         for(Map.Entry<String, Button> field : contentMap.entrySet()){

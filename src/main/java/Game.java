@@ -5,6 +5,7 @@ public class Game {
     Player activePlayer;
     Player player1;
     Player player2;
+    Field field;
 
     public Game() {
         player1 = new Player("Spieler 1", Sign.cross);
@@ -39,10 +40,14 @@ public class Game {
     public final String checkField(String id) {
         List<Field> fields = createdFields.get(id.charAt(0));
         Field field = fields.get(Character.getNumericValue(id.charAt(1)));
-        if(field.isOccupied() == false) {
-            field.setOccupied(true);
-        }
         return field.id;
+    }
+
+    public void setFieldAsOccupied() {
+        //field.setOccupied();
+    }
+    public boolean checkIfFieldIsOccupied(Field field) {
+        return field.isOccupied();
     }
 
     public void toggleActivePlayer() {
@@ -51,6 +56,11 @@ public class Game {
         } else {
             activePlayer = player1;
         }
+    }
+
+    public String toggleActivePlayerName() {
+        String name = activePlayer.getPlayerName();
+        return name;
     }
 
     // get the player-icon

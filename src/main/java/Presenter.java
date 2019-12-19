@@ -2,7 +2,6 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.print.PageLayout;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -14,9 +13,13 @@ import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
     private final Game game;
+    public String activeName;
+
+    private final Main main;
 
     Map buttons = new HashMap<Character, List<Button>>();
 
+    @FXML private Text active_playername;
     @FXML private Button a0;
     @FXML private Button b0;
     @FXML private Button c0;
@@ -33,7 +36,6 @@ public class Presenter implements Initializable {
 
 
     HashMap<String, Button> contentMap = new HashMap<String, Button>();
-
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
         @Override
@@ -60,13 +62,17 @@ public class Presenter implements Initializable {
 
     };
 
-    public Presenter(Game game) {
+    public Presenter(Game game, Main main) {
         //buttons.put("a",0);
         this.game = game;
+        this.main = main;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        String activeName = game.toggleActivePlayerName();
+        active_playername.setText(activeName);
+
         //Player activePlayer = game.getActivePlayer();
         /*
         for(Map.Entry<String, Button> field : contentMap.entrySet()){
@@ -100,7 +106,6 @@ public class Presenter implements Initializable {
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
 
-
     }
 
     public void countWins() {
@@ -121,11 +126,10 @@ public class Presenter implements Initializable {
     }
 
     private void exitButtonHandler(ActionEvent actionEvent) {
-             Stage stage = (Stage) button_exit.getScene().getWindow();
-            stage.close();
+        main.exit();
+
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
-
+       game.reset();
     }
 }
-

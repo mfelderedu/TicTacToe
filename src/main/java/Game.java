@@ -5,6 +5,7 @@ public class Game {
     Player activePlayer;
     Player player1;
     Player player2;
+    Field field;
 
     public Game() {
         player1 = new Player("Spieler 1", Sign.cross);
@@ -16,16 +17,16 @@ public class Game {
     }
 
     // generate field-cols
-    public final Map<Character, List> generateCols() {
+    private final Map<Character, List> generateCols(){
         Map cols = new HashMap<>();
-        for (char alphabet = 'a'; alphabet <= 'c'; alphabet++) {
+        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
             cols.put(alphabet, generateFieldRows(alphabet));
         }
         return cols;
     }
 
     // generate rows per col
-    public final List<Field> generateFieldRows(char col) {
+    private final List<Field> generateFieldRows(char col){
         List<Field> rows = new ArrayList<>();
         for (int j = 0; j <= 2; j++) {
             String fieldName = String.valueOf(col) + j;
@@ -45,12 +46,24 @@ public class Game {
         return field.id;
     }
 
+    public void setFieldAsOccupied() {
+        //field.setOccupied();
+    }
+    public boolean checkIfFieldIsOccupied(Field field) {
+        return field.isOccupied();
+    }
+
     public void toggleActivePlayer() {
         if (activePlayer == player1) {
             activePlayer = player2;
         } else {
             activePlayer = player1;
         }
+    }
+
+    public String toggleActivePlayerName() {
+        String name = activePlayer.getPlayerName();
+        return name;
     }
 
     // get the player-icon
@@ -70,8 +83,10 @@ public class Game {
     }
 
     private void resetfields() {
-        //field.reset();
+        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ){
+            for (int j = 0; j <= 2; j++) {
+                createdFields.get(alphabet).get(j);
+            }
+            }
     }
 }
-
-

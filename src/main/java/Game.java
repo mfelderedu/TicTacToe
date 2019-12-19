@@ -16,7 +16,7 @@ public class Game {
     }
 
     // generate field-cols
-    public final Map<Character, List> generateCols(){
+    private final Map<Character, List> generateCols(){
         Map cols = new HashMap<>();
         for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
             cols.put(alphabet, generateFieldRows(alphabet));
@@ -25,7 +25,7 @@ public class Game {
     }
 
     // generate rows per col
-    public final List<Field> generateFieldRows(char col){
+    private final List<Field> generateFieldRows(char col){
         List<Field> rows = new ArrayList<>();
         for (int j = 0; j <= 2; j++) {
             String fieldName = String.valueOf(col) + j;
@@ -59,7 +59,6 @@ public class Game {
         return sign;
     }
 
-
     public void reset() {
         resetfields();
         resetScores();
@@ -70,6 +69,12 @@ public class Game {
     }
 
     private void resetfields() {
-        //field.reset();
+        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ){
+            for (int j = 0; j <= 2; j++) {
+                createdFields.get(alphabet).get(j);
+            }
+            }
     }
 }
+
+// TODO: 19.12.19ö

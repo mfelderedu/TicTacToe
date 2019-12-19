@@ -9,13 +9,16 @@ import javax.swing.*;
 import java.net.URL;
 
 public class Main extends Application {
+    Stage primaryStage;
+
     public static void main(String[] args) {
         launch(args);
     }
 
     public void start(Stage primaryStage) throws Exception{
+        this.primaryStage = primaryStage;
         Game game = new Game();
-        Presenter presenter = new Presenter(game);
+        Presenter presenter = new Presenter(game, this);
 
         URL resource = getClass().getResource("view.fxml");
         FXMLLoader loader = new FXMLLoader(resource);
@@ -25,8 +28,8 @@ public class Main extends Application {
         GridPane root = loader.load();
         initScene(primaryStage, root);
 
-        primaryStage.setTitle("Tic Tac Toe");
-        primaryStage.show();
+        this.primaryStage.setTitle("Tic Tac Toe");
+        this.primaryStage.show();
     }
 
     private void initScene(Stage primaryStage, GridPane root) {
@@ -56,5 +59,9 @@ public class Main extends Application {
 
         primaryStage.setResizable(false);
         primaryStage.setScene(scene);
+    }
+
+    public void exit() {
+        primaryStage.close();
     }
 }

@@ -14,26 +14,10 @@ import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
     private final Game game;
+    private final Main main;
 
     Map buttons = new HashMap<Character, List<Button>>();
-
-    @FXML private Button a0;
-    @FXML private Button b0;
-    @FXML private Button c0;
-    @FXML private Button a1;
-    @FXML private Button b1;
-    @FXML private Button c1;
-    @FXML private Button a2;
-    @FXML private Button b2;
-    @FXML private Button c2;
-    @FXML private Button button_restart;
-    @FXML private Button button_newgame;
-    @FXML private Button button_settings;
-    @FXML private Button button_exit;
-
-
     HashMap<String, Button> contentMap = new HashMap<String, Button>();
-
     EventHandler<ActionEvent> handler = new EventHandler<>() {
 
         @Override
@@ -59,10 +43,24 @@ public class Presenter implements Initializable {
         }
 
     };
+    @FXML private Button a0;
+    @FXML private Button b0;
+    @FXML private Button c0;
+    @FXML private Button a1;
+    @FXML private Button b1;
+    @FXML private Button c1;
+    @FXML private Button a2;
+    @FXML private Button b2;
+    @FXML private Button c2;
+    @FXML private Button button_restart;
+    @FXML private Button button_newgame;
+    @FXML private Button button_settings;
+    @FXML private Button button_exit;
 
-    public Presenter(Game game) {
+    public Presenter(Game game, Main main) {
         //buttons.put("a",0);
         this.game = game;
+        this.main = main;
     }
 
     @Override
@@ -111,7 +109,7 @@ public class Presenter implements Initializable {
     }
 
     public void clickOnRestart() {
-
+    game.reset();
     }
 
 
@@ -120,8 +118,8 @@ public class Presenter implements Initializable {
     }
 
     private void exitButtonHandler(ActionEvent actionEvent) {
-             Stage stage = (Stage) button_exit.getScene().getWindow();
-            stage.close();
+        main.exit();
+
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
         contentMap.put(" ", a0);

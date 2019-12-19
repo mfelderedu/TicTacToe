@@ -29,7 +29,7 @@ public class Presenter implements Initializable {
     @FXML private Button a2;
     @FXML private Button b2;
     @FXML private Button c2;
-    @FXML private Button button_restart;
+    @FXML private Button button_newfield;
     @FXML private Button button_newgame;
     @FXML private Button button_settings;
     @FXML private Button button_exit;
@@ -50,10 +50,11 @@ public class Presenter implements Initializable {
 
             //Sign p1 = Sign.cross;
             //pressedButton.setText(String.valueOf(p1));
-                // set icon to the field
-                //String sign = Sign.cross;
-                Sign sign = game.getActivePlayerSign();
-                //String sign = "x";
+
+            // set icon to the field
+            //String sign = Sign.cross;
+            Sign sign = game.getActivePlayerSign();
+            //String sign = "x";
 
             pressedButton.setText(String.valueOf(sign.representationCharacter()));
             game.toggleActivePlayer();
@@ -116,6 +117,7 @@ public class Presenter implements Initializable {
     }
 
     public void clickOnRestart() {
+
     }
 
 
@@ -128,6 +130,6 @@ public class Presenter implements Initializable {
 
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
-       game.reset();
+       game.newGame();
     }
 }

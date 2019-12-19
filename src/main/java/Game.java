@@ -40,6 +40,9 @@ public class Game {
     public final String checkField(String id) {
         List<Field> fields = createdFields.get(id.charAt(0));
         Field field = fields.get(Character.getNumericValue(id.charAt(1)));
+        if (field.isOccupied() == false) {
+            field.setOccupied(true);
+        }
         return field.id;
     }
 
@@ -69,7 +72,8 @@ public class Game {
         return sign;
     }
 
-    public void reset() {
+
+    public void newGame() {
         resetfields();
         resetScores();
     }
@@ -86,5 +90,3 @@ public class Game {
             }
     }
 }
-
-// TODO: 19.12.19ö

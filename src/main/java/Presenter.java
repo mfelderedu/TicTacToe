@@ -2,6 +2,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -10,7 +11,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 
 public class Presenter implements Initializable {
     private final Game game;
@@ -55,6 +55,7 @@ public class Presenter implements Initializable {
             //String sign = "x";
 
             pressedButton.setText(String.valueOf(sign.representationCharacter()));
+            game.toggleActivePlayer();
         }
 
     };
@@ -66,7 +67,7 @@ public class Presenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        //Player activePlayer = game.getActivePlayer();
         /*
         for(Map.Entry<String, Button> field : contentMap.entrySet()){
             field.getValue().setOnAction(handler);

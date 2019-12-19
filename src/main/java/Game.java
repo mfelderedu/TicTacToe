@@ -7,10 +7,11 @@ public class Game {
     Player player2;
 
     public Game() {
-        Player player1 = new Player("Spieler 1", Sign.cross);
-        Player player2 = new Player("Spieler 2", Sign.circle);
+        player1 = new Player("Spieler 1", Sign.cross);
+        player2 = new Player("Spieler 2", Sign.circle);
         generateCols();
         createdFields = generateCols();
+
         activePlayer = player1;
     }
 
@@ -42,6 +43,14 @@ public class Game {
             field.setOccupied(true);
         }
         return field.id;
+    }
+
+    public void toggleActivePlayer() {
+        if (activePlayer == player1) {
+            activePlayer = player2;
+        } else {
+            activePlayer = player1;
+        }
     }
 
     // get the player-icon

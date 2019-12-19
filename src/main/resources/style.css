@@ -2,7 +2,7 @@
 .root {
     -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI", "Times New Roman", sans-serif;
-    -fx-background: rgb(130, 130, 130);
+    -fx-background: FC0 (130, 130, 130);
     -fx-base: rgb(0,0,0);
     -fx-text-fill: rgb(0,0,0);
 }
@@ -20,7 +20,7 @@
     -fx-border-color: rgb(0,0,0);
 }
 .ttt-field:hover {
-    -fx-background-color: rgb(170, 170, 170);
+    -fx-background-color: rgb (170, 170, 170);
 }
 
 /* Einzelne Felder */
@@ -90,7 +90,7 @@
     -fx-prompt-text-fill: transparent;
 }
 .button-exit {
-    -fx-fill: lightred;
+    -fx-fill: *F00*;
 }
 .test {
     -fx-fill: red;

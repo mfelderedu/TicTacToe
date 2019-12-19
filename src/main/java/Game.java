@@ -16,16 +16,16 @@ public class Game {
     }
 
     // generate field-cols
-    public final Map<Character, List> generateCols(){
+    public final Map<Character, List> generateCols() {
         Map cols = new HashMap<>();
-        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
+        for (char alphabet = 'a'; alphabet <= 'c'; alphabet++) {
             cols.put(alphabet, generateFieldRows(alphabet));
         }
         return cols;
     }
 
     // generate rows per col
-    public final List<Field> generateFieldRows(char col){
+    public final List<Field> generateFieldRows(char col) {
         List<Field> rows = new ArrayList<>();
         for (int j = 0; j <= 2; j++) {
             String fieldName = String.valueOf(col) + j;
@@ -39,7 +39,7 @@ public class Game {
     public final String checkField(String id) {
         List<Field> fields = createdFields.get(id.charAt(0));
         Field field = fields.get(Character.getNumericValue(id.charAt(1)));
-        if(field.isOccupied() == false) {
+        if (field.isOccupied() == false) {
             field.setOccupied(true);
         }
         return field.id;
@@ -60,7 +60,7 @@ public class Game {
     }
 
 
-    public void reset() {
+    public void newGame() {
         resetfields();
         resetScores();
     }
@@ -73,3 +73,5 @@ public class Game {
         //field.reset();
     }
 }
+
+

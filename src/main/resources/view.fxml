@@ -41,7 +41,7 @@
         <Text fx:id="player2_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="CENTER">4</Text>
 
         <!-- Menu-Buttons -->
-        <Button fx:id="button_restart" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neustart" />
+        <Button fx:id="button_newfield" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neustart" />
         <Button fx:id="button_newgame" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neues Spiel" />
         <Button fx:id="button_settings" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Einstellungen" />
         <Button fx:id="button_exit" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="12" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Beenden" />

@@ -26,7 +26,7 @@ public class Presenter implements Initializable {
     @FXML private Button a2;
     @FXML private Button b2;
     @FXML private Button c2;
-    @FXML private Button button_restart;
+    @FXML private Button button_newfield;
     @FXML private Button button_newgame;
     @FXML private Button button_settings;
     @FXML private Button button_exit;
@@ -100,6 +100,7 @@ public class Presenter implements Initializable {
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
 
+
     }
 
     public void countWins() {
@@ -124,14 +125,7 @@ public class Presenter implements Initializable {
             stage.close();
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
-        contentMap.put(" ", a0);
-        contentMap.put(" ", b0);
-        contentMap.put(" ", c0);
-        contentMap.put(" ", a1);
-        contentMap.put(" ", b1);
-        contentMap.put(" ", c1);
-        contentMap.put(" ", a2);
-        contentMap.put(" ", b2);
-        contentMap.put(" ", c2);
+
     }
 }
+

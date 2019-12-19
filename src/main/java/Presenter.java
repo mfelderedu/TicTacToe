@@ -7,15 +7,11 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
-import java.util.function.Function;
 
 public class Presenter implements Initializable {
-    private final Game game;
-
-    Map buttons = new HashMap<Character, List<Button>>();
+    private Game game;
 
     @FXML private Button a0;
     @FXML private Button b0;
@@ -50,17 +46,12 @@ public class Presenter implements Initializable {
             //pressedButton.setText(String.valueOf(p1));
 
             // set icon to the field
-            //String sign = Sign.cross;
-            Sign sign = game.getActivePlayerSign();
-            //String sign = "x";
-
-            pressedButton.setText(String.valueOf(sign.representationCharacter()));
+            pressedButton.setText(game.getSign(id));
         }
 
     };
 
     public Presenter(Game game) {
-        //buttons.put("a",0);
         this.game = game;
     }
 
@@ -111,10 +102,10 @@ public class Presenter implements Initializable {
 
     public void clickOnRestart() {
 
+
     }
 
-
-    public void settingButtonHandler(ActionEvent actionEvent) {
+    public void clickOnSettings() {
 
     }
 
@@ -122,15 +113,9 @@ public class Presenter implements Initializable {
              Stage stage = (Stage) button_exit.getScene().getWindow();
             stage.close();
     }
+
+    //NewGame button
     private void newGameButtonHandler(ActionEvent actionEvent){
-        contentMap.put(" ", a0);
-        contentMap.put(" ", b0);
-        contentMap.put(" ", c0);
-        contentMap.put(" ", a1);
-        contentMap.put(" ", b1);
-        contentMap.put(" ", c1);
-        contentMap.put(" ", a2);
-        contentMap.put(" ", b2);
-        contentMap.put(" ", c2);
     }
 }
+

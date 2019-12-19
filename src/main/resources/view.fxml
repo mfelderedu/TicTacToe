@@ -27,21 +27,25 @@
             <Insets bottom="10" left="25" right="25" top="25" />
         </padding>
 
+        <!-- Active Player -->
+        <Text fx:id="sign_active_player" styleClass="active-player" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER">&#x27A4;</Text>
+        <Text fx:id="active_playername" styleClass="active-playername" GridPane.columnIndex="1" GridPane.rowIndex="1"></Text>
+
         <!-- Table-head -->
-        <Text styleClass="table-header" GridPane.columnIndex="4" GridPane.rowIndex="0" GridPane.valignment="CENTER">W</Text>
+        <Text styleClass="table-header" GridPane.columnIndex="4" GridPane.rowIndex="3" GridPane.valignment="CENTER">W</Text>
 
         <!-- Player 1 -->
-        <Text fx:id="player1_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER">x</Text>
-        <Text fx:id="player1_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="1">Spieler 1</Text>
-        <Text fx:id="player1_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="1" GridPane.valignment="CENTER">4</Text>
+        <Text fx:id="player1_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.valignment="CENTER">x</Text>
+        <Text fx:id="player1_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="4">Spieler 1</Text>
+        <Text fx:id="player1_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="CENTER">4</Text>
 
         <!-- Player 2 -->
-        <Text fx:id="player2_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="CENTER">o</Text>
-        <Text fx:id="player2_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="2">Spieler 2</Text>
-        <Text fx:id="player2_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="2" GridPane.valignment="CENTER">4</Text>
+        <Text fx:id="player2_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.valignment="CENTER">o</Text>
+        <Text fx:id="player2_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="5">Spieler 2</Text>
+        <Text fx:id="player2_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER">4</Text>
 
         <!-- Menu-Buttons -->
-        <Button fx:id="button_restart" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="5" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neustart" />
+        <Button fx:id="button_restart" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="6" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neustart" />
         <Button fx:id="button_newgame" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Neues Spiel" />
         <Button fx:id="button_settings" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="11" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Einstellungen" />
         <Button fx:id="button_exit" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="12" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Beenden" />

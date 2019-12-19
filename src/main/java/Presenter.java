@@ -2,16 +2,20 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.print.PageLayout;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.util.*;
 import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
-    private Game game;
+    private final Game game;
+
+    Map buttons = new HashMap<Character, List<Button>>();
 
     @FXML private Button a0;
     @FXML private Button b0;
@@ -46,18 +50,24 @@ public class Presenter implements Initializable {
             //pressedButton.setText(String.valueOf(p1));
 
             // set icon to the field
-            pressedButton.setText(game.getSign(id));
+            //String sign = Sign.cross;
+            Sign sign = game.getActivePlayerSign();
+            //String sign = "x";
+
+            pressedButton.setText(String.valueOf(sign.representationCharacter()));
+            game.toggleActivePlayer();
         }
 
     };
 
     public Presenter(Game game) {
+        //buttons.put("a",0);
         this.game = game;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        //Player activePlayer = game.getActivePlayer();
         /*
         for(Map.Entry<String, Button> field : contentMap.entrySet()){
             field.getValue().setOnAction(handler);
@@ -102,10 +112,10 @@ public class Presenter implements Initializable {
 
     public void clickOnRestart() {
 
-
     }
 
-    public void clickOnSettings() {
+
+    public void settingButtonHandler(ActionEvent actionEvent) {
 
     }
 
@@ -113,9 +123,15 @@ public class Presenter implements Initializable {
              Stage stage = (Stage) button_exit.getScene().getWindow();
             stage.close();
     }
-
-    //NewGame button
     private void newGameButtonHandler(ActionEvent actionEvent){
+        contentMap.put(" ", a0);
+        contentMap.put(" ", b0);
+        contentMap.put(" ", c0);
+        contentMap.put(" ", a1);
+        contentMap.put(" ", b1);
+        contentMap.put(" ", c1);
+        contentMap.put(" ", a2);
+        contentMap.put(" ", b2);
+        contentMap.put(" ", c2);
     }
 }
-

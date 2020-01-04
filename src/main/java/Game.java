@@ -2,31 +2,30 @@ import java.util.*;
 
 public class Game {
     private Map<Character, List> createdFields;
-    Player activePlayer;
-    Player player1;
-    Player player2;
-    Field field;
+    private Player activePlayer;
+    private Player player1;
+    private Player player2;
 
     public Game() {
         player1 = new Player("Spieler 1", Sign.cross);
         player2 = new Player("Spieler 2", Sign.circle);
-        generateCols();
-        createdFields = generateCols();
+
+        createdFields = generateField();
 
         activePlayer = player1;
     }
 
     // generate field-cols
-    private final Map<Character, List> generateCols(){
-        Map cols = new HashMap<>();
+    private Map<Character, List> generateField(){
+        Map<Character, List> columns = new HashMap<>();
         for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
-            cols.put(alphabet, generateFieldRows(alphabet));
+            columns.put(alphabet, generateFieldRows(alphabet));
         }
-        return cols;
+        return columns;
     }
 
     // generate rows per col
-    private final List<Field> generateFieldRows(char col){
+    private List<Field> generateFieldRows(char col){
         List<Field> rows = new ArrayList<>();
         for (int j = 0; j <= 2; j++) {
             String fieldName = String.valueOf(col) + j;

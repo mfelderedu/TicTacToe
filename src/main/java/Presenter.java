@@ -1,8 +1,11 @@
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -20,6 +23,13 @@ public class Presenter implements Initializable {
     Map buttons = new HashMap<Character, List<Button>>();
 
     @FXML private Text active_playername;
+
+    @FXML private GridPane column_a;
+    @FXML private GridPane column_b;
+    @FXML private GridPane column_c;
+
+    @FXML private GridPane field;
+
     @FXML private Button a0;
     @FXML private Button b0;
     @FXML private Button c0;
@@ -35,8 +45,8 @@ public class Presenter implements Initializable {
     @FXML private Button button_exit;
 
 
-    HashMap<String, Button> contentMap = new HashMap<String, Button>();
-    EventHandler<ActionEvent> handler = new EventHandler<>() {
+    private HashMap<String, Button> contentMap = new HashMap<String, Button>();
+    private EventHandler<ActionEvent> handler = new EventHandler<>() {
 
         @Override
         public void handle(ActionEvent actionEvent) {
@@ -73,13 +83,20 @@ public class Presenter implements Initializable {
         String activeName = game.toggleActivePlayerName();
         active_playername.setText(activeName);
 
-        //Player activePlayer = game.getActivePlayer();
-        /*
-        for(Map.Entry<String, Button> field : contentMap.entrySet()){
-            field.getValue().setOnAction(handler);
-            contentMap.put(field.getKey(), field.getValue());
+        final ObservableList<Node> columns = field.getChildren();
+        for(Node node : columns) {
+            GridPane column = (GridPane) node;
+            ObservableList<Node> buttons = column.getChildren();
+
+            for(Node buttonNode : buttons) {
+                Button button = (Button) buttonNode;
+                button.setOnAction(handler);
+            }
         }
-        */
+
+        //Player activePlayer = game.getActivePlayer();
+
+
 
         // set actions on click on field
         a0.setOnAction(handler);

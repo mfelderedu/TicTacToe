@@ -6,19 +6,26 @@
 <?import javafx.scene.text.*?>
 
 <!-- Container -->
+<?import javafx.scene.Group?>
 <GridPane hgap="0" vgap="0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
     <!-- Left Grid -->
-    <GridPane styleClass="grid-left" GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="450" prefWidth="450" alignment="center">
+    <GridPane fx:id="field" styleClass="grid-left" GridPane.columnIndex="0" GridPane.rowIndex="0" prefHeight="450" prefWidth="450" alignment="center">
         <!-- TTT-Fields -->
-        <Button fx:id="a0" styleClass="ttt-field" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="b0" styleClass="ttt-field" GridPane.columnIndex="1" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="c0" styleClass="ttt-field" GridPane.columnIndex="2" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="a1" styleClass="ttt-field" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="b1" styleClass="ttt-field" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="c1" styleClass="ttt-field" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="a2" styleClass="ttt-field" GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="b2" styleClass="ttt-field" GridPane.columnIndex="1" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
-        <Button fx:id="c2" styleClass="ttt-field" GridPane.columnIndex="2" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+        <GridPane fx:id="column_a" GridPane.columnIndex="0">
+            <Button fx:id="a0" styleClass="ttt-field" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="a1" styleClass="ttt-field" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="a2" styleClass="ttt-field" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+        </GridPane >
+        <GridPane fx:id="column_b" GridPane.columnIndex="1">
+            <Button fx:id="b0" styleClass="ttt-field" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="b1" styleClass="ttt-field" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="b2" styleClass="ttt-field" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+        </GridPane>
+        <GridPane fx:id="column_c" GridPane.columnIndex="2">
+            <Button fx:id="c0" styleClass="ttt-field" GridPane.rowIndex="0" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="c1" styleClass="ttt-field" GridPane.rowIndex="1" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+            <Button fx:id="c2" styleClass="ttt-field" GridPane.rowIndex="2" GridPane.fillWidth="100" GridPane.fillHeight="100" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.halignment="CENTER" text="" />
+        </GridPane>
     </GridPane>
 
     <!-- Right Grid -->

@@ -17,6 +17,7 @@ import java.util.ResourceBundle;
 public class Presenter implements Initializable {
     private final Game game;
     private final Main main;
+    public String activeName;
 
     @FXML private Text active_playername;
 
@@ -44,6 +45,8 @@ public class Presenter implements Initializable {
                 button.setText(String.valueOf(sign.representationCharacter()));
 
                 game.toggleActivePlayer();
+                String activeName = game.toggleActivePlayerName();
+                active_playername.setText(activeName);
             }
         };
     }

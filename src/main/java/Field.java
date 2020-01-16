@@ -1,12 +1,6 @@
 public class Field {
-    private String id;
     private Sign sign;
-    private boolean occupied;
-
-    public Field(String id) {
-        this.id = id;
-        this.occupied = false;
-    }
+    private boolean occupied = false;
 
     public Sign getSign() {
         return sign;
@@ -26,7 +20,8 @@ public class Field {
     }
 
     public void reset() {
-
+       sign= null;
+       occupied = false;
     }
 
 }

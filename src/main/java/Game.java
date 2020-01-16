@@ -28,8 +28,8 @@ public class Game {
     private List<Field> generateFieldRows(char col){
         List<Field> rows = new ArrayList<>();
         for (int j = 0; j <= 2; j++) {
-            String fieldName = String.valueOf(col) + j;
-            Field field = new Field(fieldName);
+            //String fieldName = String.valueOf(col) + j;
+            Field field = new Field();
             rows.add(field);
         }
         return rows;

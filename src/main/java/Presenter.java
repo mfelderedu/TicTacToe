@@ -73,6 +73,7 @@ public class Presenter implements Initializable {
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
 
+
     }
 
     public void countWins() {

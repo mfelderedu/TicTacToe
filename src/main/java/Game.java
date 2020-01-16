@@ -47,21 +47,40 @@ public class Game {
             return true;
         } else if(ifRowSameSign(sign)) {
             return true;
-        //} else if(ifDiagonalSameSign(sign)) {
-       //     return true;
+        } else if(ifDiagonalSameSign(sign)) {
+            return true;
         } else {
             return false;
         }
     }
     public boolean ifColumnSameSign(Sign sign) {
-        int counter = 0;
+        int counterColumn = 0;
         for (char column = 'a'; column <= 'c'; column++) {
             for (int row = 0; row <= 2; row++) {
                 if(gameFields.get(column).get(row).getSign() == sign) {
-                    counter++;
+                    counterColumn++;
+                } else {
+                    counterColumn--;
                 }
             }
-            if(counter == 3) {
+            if(counterColumn == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean ifRowSameSign(Sign sign) {
+        int counterRow = 0;
+        for (int row = 0; row <= 2; row++) {
+             for (char column = 'a'; column <= 'c'; column++) {
+                if(gameFields.get(column).get(row).getSign() == sign) {
+                    counterRow++;
+                } else {
+                    counterRow--;
+                }
+            }
+            if(counterRow == 3) {
                 return true;
             }
         }
@@ -70,21 +89,6 @@ public class Game {
 
     public boolean ifDiagonalSameSign(Sign sign) {
         int counter = 0;
-        return false;
-    }
-
-    public boolean ifRowSameSign(Sign sign) {
-        int counter = 0;
-        for (int row = 0; row <= 2; row++) {
-             for (char column = 'a'; column <= 'c'; column++) {
-                if(gameFields.get(column).get(row).getSign() == sign) {
-                    counter++;
-                }
-            }
-            if(counter == 3) {
-                return true;
-            }
-        }
         return false;
     }
 

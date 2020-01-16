@@ -57,7 +57,7 @@ public class Game {
         int counter = 0;
         for (char column = 'a'; column <= 'c'; column++) {
             for (int row = 0; row <= 2; row++) {
-                if(createdFields.get(column).get(row).getSign() == sign) {
+                if(gameFields.get(column).get(row).getSign() == sign) {
                     counter++;
                 }
             }
@@ -77,7 +77,7 @@ public class Game {
         int counter = 0;
         for (int row = 0; row <= 2; row++) {
              for (char column = 'a'; column <= 'c'; column++) {
-                if(createdFields.get(column).get(row).getSign() == sign) {
+                if(gameFields.get(column).get(row).getSign() == sign) {
                     counter++;
                 }
             }

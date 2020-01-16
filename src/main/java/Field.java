@@ -26,6 +26,8 @@ public class Field {
     }
 
     public void reset() {
+        occupied =false;
+        sign =null;
 
     }
 

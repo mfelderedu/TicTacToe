@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Game {
-    private Map<Character, List> createdFields;
+    private Map<Character, List<Field>> createdFields;
     private Player activePlayer;
     private Player player1;
     private Player player2;
@@ -16,8 +16,8 @@ public class Game {
     }
 
     // generate field-cols
-    private Map<Character, List> generateField(){
-        Map<Character, List> columns = new HashMap<>();
+    private Map<Character, List<Field>> generateField(){
+        Map<Character, List<Field>> columns = new HashMap<>();
         for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
             columns.put(alphabet, generateFieldRows(alphabet));
         }
@@ -42,8 +42,50 @@ public class Game {
         return field;
     }
 
-    public boolean checkIfFieldIsOccupied(Field field) {
-        return field.isOccupied();
+    public boolean isGameWon(Sign sign) {
+        if(ifColumnSameSign(sign)) {
+            return true;
+        } else if(ifRowSameSign(sign)) {
+            return true;
+        //} else if(ifDiagonalSameSign(sign)) {
+       //     return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean ifColumnSameSign(Sign sign) {
+        int counter = 0;
+        for (char column = 'a'; column <= 'c'; column++) {
+            for (int row = 0; row <= 2; row++) {
+                if(createdFields.get(column).get(row).getSign() == sign) {
+                    counter++;
+                }
+            }
+            if(counter == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean ifDiagonalSameSign(Sign sign) {
+        int counter = 0;
+        return false;
+    }
+
+    public boolean ifRowSameSign(Sign sign) {
+        int counter = 0;
+        for (int row = 0; row <= 2; row++) {
+             for (char column = 'a'; column <= 'c'; column++) {
+                if(createdFields.get(column).get(row).getSign() == sign) {
+                    counter++;
+                }
+            }
+            if(counter == 3) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void toggleActivePlayer() {
@@ -76,10 +118,10 @@ public class Game {
     }
 
     private void resetfields() {
-        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ){
-            for (int j = 0; j <= 2; j++) {
-                createdFields.get(alphabet).get(j);
+        for(char column = 'a'; column <='c'; column++ ){
+            for (int row = 0; row <= 2; row++) {
+                createdFields.get(column).get(row);
             }
-            }
+        }
     }
 }

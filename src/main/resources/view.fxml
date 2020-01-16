@@ -44,12 +44,12 @@
         <!-- Player 1 -->
         <Text fx:id="player1_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.valignment="CENTER">x</Text>
         <Text fx:id="player1_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="4">Spieler 1</Text>
-        <Text fx:id="player1_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="CENTER">4</Text>
+        <Text fx:id="player1_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="4" GridPane.valignment="CENTER">0</Text>
 
         <!-- Player 2 -->
         <Text fx:id="player2_sign" styleClass="table-user-sign" GridPane.columnIndex="0" GridPane.rowIndex="5" GridPane.valignment="CENTER">o</Text>
         <Text fx:id="player2_name" styleClass="table-user-name" GridPane.columnIndex="1" GridPane.rowIndex="5">Spieler 2</Text>
-        <Text fx:id="player2_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER">4</Text>
+        <Text fx:id="player2_points" styleClass="table-user-points" GridPane.columnIndex="4" GridPane.rowIndex="5" GridPane.valignment="CENTER">0</Text>
 
         <!-- Menu-Buttons -->
         <Button fx:id="button_newfield" styleClass="menu-button" GridPane.columnIndex="1" GridPane.rowIndex="10" GridPane.columnSpan="3" GridPane.halignment="CENTER" text="Restart" />

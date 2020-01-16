@@ -42,9 +42,13 @@ public class Presenter implements Initializable {
                     clickedField.setSign(sign);
                     button.setText(String.valueOf(sign.representationCharacter()));
 
-                    game.toggleActivePlayer();
-                    String activeName = game.toggleActivePlayerName();
-                    active_playername.setText(activeName);
+                    if(!game.isGameWon(sign)) {
+                        game.toggleActivePlayer();
+                        String activeName = game.toggleActivePlayerName();
+                        active_playername.setText(activeName);
+                    } else {
+
+                    }
                 }
             }
         };
@@ -75,10 +79,6 @@ public class Presenter implements Initializable {
 
     }
 
-    public void clickOnField() {
-
-    }
-
     public void clickOnRestart() {
 
     }
@@ -90,7 +90,6 @@ public class Presenter implements Initializable {
 
     private void exitButtonHandler(ActionEvent actionEvent) {
         main.exit();
-
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
        game.newGame();

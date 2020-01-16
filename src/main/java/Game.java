@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class Game {
-    private Map<Character, List> createdFields;
+    private Map<Character, List<Field>> gameFields;
     private Player activePlayer;
     private Player player1;
     private Player player2;
@@ -10,14 +10,14 @@ public class Game {
         player1 = new Player("Spieler 1", Sign.cross);
         player2 = new Player("Spieler 2", Sign.circle);
 
-        createdFields = generateField();
+        gameFields = generateField();
 
         activePlayer = player1;
     }
 
     // generate field-cols
-    private Map<Character, List> generateField(){
-        Map<Character, List> columns = new HashMap<>();
+    private Map<Character, List<Field>> generateField(){
+        Map<Character, List<Field>> columns = new HashMap<>();
         for(char alphabet = 'a'; alphabet <='c'; alphabet++ ) {
             columns.put(alphabet, generateFieldRows(alphabet));
         }
@@ -37,14 +37,11 @@ public class Game {
 
     // set Field as Occupied
     public final Field getField(String id) {
-        List<Field> fields = createdFields.get(id.charAt(0));
+        List<Field> fields = gameFields.get(id.charAt(0));
         Field field = fields.get(Character.getNumericValue(id.charAt(1)));
         return field;
     }
 
-    public boolean checkIfFieldIsOccupied(Field field) {
-        return field.isOccupied();
-    }
 
     public void toggleActivePlayer() {
         if (activePlayer == player1) {
@@ -76,10 +73,11 @@ public class Game {
     }
 
     private void resetfields() {
-        for(char alphabet = 'a'; alphabet <='c'; alphabet++ ){
-            for (int j = 0; j <= 2; j++) {
-                createdFields.get(alphabet).get(j);
+        for(char column = 'a'; column <='c'; column++ ){
+            for (int row = 0; row <= 2; row++) {
+                Field field = gameFields.get(column).get(row);
+                field.reset();
             }
-            }
+        }
     }
 }

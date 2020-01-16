@@ -25,4 +25,8 @@ public class Field {
         this.occupied = occupied;
     }
 
+    public void reset() {
+
+    }
+
 }

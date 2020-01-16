@@ -7,17 +7,13 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 
 import java.net.URL;
-import java.util.*;
-import java.util.HashMap;
 import java.util.ResourceBundle;
 
 public class Presenter implements Initializable {
     private final Game game;
     private final Main main;
-    public String activeName;
 
     @FXML private Text active_playername;
 
@@ -28,25 +24,28 @@ public class Presenter implements Initializable {
     @FXML private Button button_settings;
     @FXML private Button button_exit;
 
-    private EventHandler<ActionEvent> handler;
+    private EventHandler<ActionEvent> fieldClickHandler;
 
     public Presenter(Game game, Main main) {
         this.game = game;
         this.main = main;
 
-        handler = new EventHandler<>() {
+        fieldClickHandler = new EventHandler<>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Button button = (Button) actionEvent.getSource();
-                game.checkField(button.getId());
+                Field clickedField = game.getField(button.getId());
 
-                // set icon to the field
-                Sign sign = game.getActivePlayerSign();
-                button.setText(String.valueOf(sign.representationCharacter()));
+                if(!clickedField.isOccupied()) {
+                    // set icon to the field
+                    Sign sign = game.getActivePlayerSign();
+                    clickedField.setSign(sign);
+                    button.setText(String.valueOf(sign.representationCharacter()));
 
-                game.toggleActivePlayer();
-                String activeName = game.toggleActivePlayerName();
-                active_playername.setText(activeName);
+                    game.toggleActivePlayer();
+                    String activeName = game.toggleActivePlayerName();
+                    active_playername.setText(activeName);
+                }
             }
         };
     }
@@ -63,7 +62,7 @@ public class Presenter implements Initializable {
 
             for(Node buttonNode : buttons) {
                 Button button = (Button) buttonNode;
-                button.setOnAction(handler);
+                button.setOnAction(fieldClickHandler);
             }
         }
 

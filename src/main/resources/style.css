@@ -2,7 +2,7 @@
 .root {
     -fx-font-size: 14pt;
     -fx-font-family: "Segoe UI", "Times New Roman", sans-serif;
-    -fx-background: FC0 (130, 130, 130);
+    -fx-background: rgb(130, 130, 130);
     -fx-base: rgb(0,0,0);
     -fx-text-fill: rgb(0,0,0);
 }
@@ -20,7 +20,7 @@
     -fx-border-color: rgb(0,0,0);
 }
 .ttt-field:hover {
-    -fx-background-color: rgb (170, 170, 170);
+    -fx-background-color: rgb(170, 170, 170);
 }
 
 /* Einzelne Felder */
@@ -76,7 +76,7 @@
     -fx-background-color: rgb(190,190,190);
     -fx-text-fill: rgb(0,0,0);
     -fx-cursor: text;
-    -fx-padding: 0.333333em 0.583em 0.333333em 0.583em; /* 4 7 4 7 */
+    -fx-padding: 0.333333em 0.583em 0.333333em 0.583em;
     -fx-border-color: rgb(255,255,255);
     -fx-border-width: 2;
     -fx-min-width: 150px;
@@ -90,7 +90,7 @@
     -fx-prompt-text-fill: transparent;
 }
 .button-exit {
-    -fx-fill: *F00*;
+    -fx-fill: #FF0000;
 }
 .test {
     -fx-fill: red;

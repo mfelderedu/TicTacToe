@@ -36,18 +36,12 @@ public class Game {
     }
 
     // set Field as Occupied
-    public final String checkField(String id) {
+    public final Field getField(String id) {
         List<Field> fields = createdFields.get(id.charAt(0));
         Field field = fields.get(Character.getNumericValue(id.charAt(1)));
-        if (field.isOccupied() == false) {
-            field.setOccupied(true);
-        }
-        return field.id;
+        return field;
     }
 
-    public void setFieldAsOccupied() {
-        //field.setOccupied();
-    }
     public boolean checkIfFieldIsOccupied(Field field) {
         return field.isOccupied();
     }

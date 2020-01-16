@@ -1,19 +1,20 @@
 public class Field {
-    String id;
-    String sign;
-    boolean occupied;
+    private String id;
+    private Sign sign;
+    private boolean occupied;
 
     public Field(String id) {
         this.id = id;
         this.occupied = false;
     }
 
-    public String getSign() {
+    public Sign getSign() {
         return sign;
     }
 
-    public void setSign(String sign) {
+    public void setSign(Sign sign) {
         this.sign = sign;
+        setOccupied(true);
     }
 
     public boolean isOccupied() {

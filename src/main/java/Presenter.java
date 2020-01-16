@@ -93,5 +93,7 @@ public class Presenter implements Initializable {
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
        game.newGame();
+
+
     }
 }

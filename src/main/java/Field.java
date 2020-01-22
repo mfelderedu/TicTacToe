@@ -1,8 +1,7 @@
-import javafx.beans.property.BooleanProperty;
 
 public class Field {
     private Sign sign;
-    private BooleanProperty occupied = false;
+    private boolean occupied = false;
 
     public Sign getSign() {
         return sign;
@@ -22,7 +21,7 @@ public class Field {
     }
 
     public void reset() {
-       sign= null;
-       occupied = false;
+        sign= null;
+        occupied = false;
     }
 }

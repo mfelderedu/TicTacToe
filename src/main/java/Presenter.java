@@ -10,12 +10,18 @@ import javafx.scene.text.Text;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class Presenter implements Initializable {
     private final Game game;
     private final Main main;
 
-    @FXML private Text active_playername;
+    @FXML
+    private Text active_playername;
+    @FXML private Text sign_active_player;
+    @FXML private Text sign_trophy;
+    @FXML private Text player1_points;
+    @FXML private Text player2_points;
 
     @FXML private GridPane field;
 
@@ -24,20 +30,21 @@ public class Presenter implements Initializable {
     @FXML private Button button_settings;
     @FXML private Button button_exit;
 
+
     private EventHandler<ActionEvent> fieldClickHandler;
 
     public Presenter(Game game, Main main) {
         this.game = game;
         this.main = main;
 
-        fieldClickHandler = new EventHandler<>() {
+        fieldClickHandler = new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 Button button = (Button) actionEvent.getSource();
                 Field clickedField = game.getField(button.getId());
 
                 if(!clickedField.isOccupied()) {
-                    // set icon to the field
+
                     Sign sign = game.getActivePlayerSign();
                     clickedField.setSign(sign);
                     button.setText(String.valueOf(sign.representationCharacter()));
@@ -47,11 +54,41 @@ public class Presenter implements Initializable {
                         String activeName = game.toggleActivePlayerName();
                         active_playername.setText(activeName);
                     } else {
-
+                        disableTTTFields();
+                        game.addPointToActivePlayer();
+                        setPlayerWon(game);
+                        setPlayersPoints(game);
                     }
                 }
             }
         };
+    }
+
+    private void setPlayersPoints(Game game) {
+        player1_points.setText(""+game.getPlayerOnePoints());
+        player2_points.setText(""+game.getPlayerTwoPoints());
+    }
+
+    private void setPlayerWon(Game game) {
+        sign_active_player.setVisible(false);
+        sign_trophy.setVisible(true);
+        //Spieler 1 WON! oder Spieler 2 WON!
+        active_playername.setText(game.getActivePlayerName()+" WON!");
+
+    }
+
+    private void disableTTTFields() {
+        Set<Node> tttFields = getAllTicTacToeButtons();
+        tttFields.forEach(field -> {
+            if(!game.isWonField(field.getId())){
+                field.setDisable(true);
+            }
+        });
+
+    }
+
+    private Set<Node> getAllTicTacToeButtons() {
+        return field.lookupAll(".ttt-field");
     }
 
     @Override
@@ -72,9 +109,11 @@ public class Presenter implements Initializable {
 
         button_exit.setOnAction(this::exitButtonHandler);
         button_newgame.setOnAction(this::newGameButtonHandler);
+        button_newfield.setOnAction(this::newFieldButtonHandler);
 
 
     }
+
 
     public void countWins() {
 
@@ -89,11 +128,27 @@ public class Presenter implements Initializable {
 
     }
 
+    private void newFieldButtonHandler(ActionEvent actionEvent) {
+        game.resetFields();
+        game.initPlayerTurn();
+        String activeName = game.getActivePlayerName();
+        active_playername.setText(activeName);
+        sign_trophy.setVisible(false);
+        sign_active_player.setVisible(true);
+        getAllTicTacToeButtons().forEach(this::resetButton);
+
+    }
+
+    private void resetButton(Node button) {
+        button.setDisable(false);
+        ((Button)button).setText("");
+    }
+
     private void exitButtonHandler(ActionEvent actionEvent) {
         main.exit();
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
-       game.newGame();
+        game.newGame();
 
 
     }

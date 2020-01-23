@@ -19,7 +19,7 @@ public class Presenter implements Initializable {
     @FXML
     private Text active_playername;
     @FXML private Text sign_active_player;
-    @FXML private Text sign_trophy;
+    @FXML private Text sign_trophy; //Trophä
     @FXML private Text player1_points;
     @FXML private Text player2_points;
 
@@ -48,14 +48,14 @@ public class Presenter implements Initializable {
                     Sign sign = game.getActivePlayerSign();
                     clickedField.setSign(sign);
                     button.setText(String.valueOf(sign.representationCharacter()));
-
+                    // Zeile 52-60 -> Felder die nicht gewonnen haben deaktivieren
                     if(!game.isGameWon(sign)) {
                         game.toggleActivePlayer();
                         String activeName = game.toggleActivePlayerName();
                         active_playername.setText(activeName);
                     } else {
                         disableTTTFields();
-                        game.addPointToActivePlayer();
+                        game.addPointToActivePlayer(); //Punkten zählen
                         setPlayerWon(game);
                         setPlayersPoints(game);
                     }
@@ -73,10 +73,10 @@ public class Presenter implements Initializable {
         sign_active_player.setVisible(false);
         sign_trophy.setVisible(true);
         //Spieler 1 WON! oder Spieler 2 WON!
-        active_playername.setText(game.getActivePlayerName()+" WON!");
+        active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
 
     }
-
+        // Zeile 80-86 -> felder die nicht gewonnen haben deaktivieren
     private void disableTTTFields() {
         Set<Node> tttFields = getAllTicTacToeButtons();
         tttFields.forEach(field -> {
@@ -129,7 +129,7 @@ public class Presenter implements Initializable {
     }
 
     private void newFieldButtonHandler(ActionEvent actionEvent) {
-        game.resetFields();
+        game.resetFields(); // Logik New Field
         game.initPlayerTurn();
         String activeName = game.getActivePlayerName();
         active_playername.setText(activeName);

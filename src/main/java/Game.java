@@ -6,7 +6,7 @@ public class Game {
     private Player player1;
     private Player player2;
 
-    private Set<Field> wonGameFields;
+    private Set<Field> wonGameFields; // Gewinner
 
     public Game() {
         player1 = new Player("Spieler 1", Sign.cross);
@@ -60,7 +60,7 @@ public class Game {
         int counterColumn = 0;
         for (char column = 'a'; column <= 'c'; column++) {
             for (int row = 0; row <= 2; row++) {
-                Field gamefield = gameFields.get(column).get(row);
+                Field gamefield = gameFields.get(column).get(row); // sieger bestimmen
                 if(gamefield.getSign() == sign) {
                     counterColumn++;
                     wonGameFields.add(gamefield);

@@ -6,13 +6,16 @@ public class Game {
     private Player player1;
     private Player player2;
 
+    private Set<Field> wonGameFields;
+
     public Game() {
         player1 = new Player("Spieler 1", Sign.cross);
         player2 = new Player("Spieler 2", Sign.circle);
 
         gameFields = generateField();
+        wonGameFields = new HashSet<>();
 
-        activePlayer = player1;
+        initPlayerTurn();
     }
 
     // generate field-cols
@@ -57,15 +60,21 @@ public class Game {
         int counterColumn = 0;
         for (char column = 'a'; column <= 'c'; column++) {
             for (int row = 0; row <= 2; row++) {
-                if(gameFields.get(column).get(row).getSign() == sign) {
+                Field gamefield = gameFields.get(column).get(row);
+                if(gamefield.getSign() == sign) {
                     counterColumn++;
+                    wonGameFields.add(gamefield);
                 } else {
                     counterColumn--;
                 }
             }
             if(counterColumn == 3) {
                 return true;
+            }else {
+                counterColumn = 0;
+                wonGameFields.clear();
             }
+
         }
         return false;
     }
@@ -73,15 +82,20 @@ public class Game {
     public boolean ifRowSameSign(Sign sign) {
         int counterRow = 0;
         for (int row = 0; row <= 2; row++) {
-             for (char column = 'a'; column <= 'c'; column++) {
-                if(gameFields.get(column).get(row).getSign() == sign) {
+            for (char column = 'a'; column <= 'c'; column++) {
+                Field gamefield = gameFields.get(column).get(row);
+                if(gamefield.getSign() == sign) {
                     counterRow++;
+                    wonGameFields.add(gamefield);
                 } else {
                     counterRow--;
                 }
             }
             if(counterRow == 3) {
                 return true;
+            }else {
+                counterRow = 0;
+                wonGameFields.clear();
             }
         }
         return false;
@@ -111,22 +125,50 @@ public class Game {
         return sign;
     }
 
+    public String getActivePlayerName() {
+        return activePlayer.getPlayerName();
+    }
+
+    public void addPointToActivePlayer() {
+        activePlayer.addPointToScore();
+    }
 
     public void newGame() {
-        resetfields();
+        resetFields();
         resetScores();
+        initPlayerTurn();
+    }
+
+    public void initPlayerTurn() {
+        activePlayer = player1;
     }
 
     private void resetScores() {
-
+        player1.resetScore();
+        player2.resetScore();
     }
 
-    private void resetfields() {
+    public void resetFields() {
         for(char column = 'a'; column <='c'; column++ ){
             for (int row = 0; row <= 2; row++) {
                 Field field = gameFields.get(column).get(row);
                 field.reset();
             }
         }
+
+        wonGameFields.clear();
+    }
+
+    public int getPlayerOnePoints() {
+        return player1.getScore();
+    }
+
+    public int getPlayerTwoPoints() {
+        return player2.getScore();
+    }
+
+
+    public boolean isWonField(String fieldId) {
+        return wonGameFields.contains(getField(fieldId));
     }
 }

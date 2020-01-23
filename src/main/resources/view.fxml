@@ -36,6 +36,8 @@
 
         <!-- Active Player -->
         <Text fx:id="sign_active_player" styleClass="active-player" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER">&#x27A4;</Text>
+        <Text fx:id="sign_trophy" styleClass="active-player" GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="CENTER" visible="false">&#127942;</Text>
+
         <Text fx:id="active_playername" styleClass="active-playername" GridPane.columnIndex="1" GridPane.rowIndex="1"></Text>
 
         <!-- Table-head -->

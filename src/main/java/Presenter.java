@@ -48,16 +48,15 @@ public class Presenter implements Initializable {
                     Sign sign = game.getActivePlayerSign();
                     clickedField.setSign(sign);
                     button.setText(String.valueOf(sign.representationCharacter()));
-                    // Zeile 52-60 -> Felder die nicht gewonnen haben deaktivieren
-                    if(!game.isGameWon(sign)) {
-                        game.toggleActivePlayer();
-                        String activeName = game.toggleActivePlayerName();
-                        active_playername.setText(activeName);
-                    } else {
-                        disableTTTFields();
+                    if(game.isGameWon(sign)) {
+                        showWinnerFields();
                         game.addPointToActivePlayer(); //Punkten zählen
                         setPlayerWon(game);
                         setPlayersPoints(game);
+                    } else {
+                        game.toggleActivePlayer();
+                        String activeName = game.toggleActivePlayerName();
+                        active_playername.setText(activeName);
                     }
                 }
             }
@@ -74,10 +73,8 @@ public class Presenter implements Initializable {
         sign_trophy.setVisible(true);
         //Spieler 1 WON! oder Spieler 2 WON!
         active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
-
     }
-        // Zeile 80-86 -> felder die nicht gewonnen haben deaktivieren
-    private void disableTTTFields() {
+    private void showWinnerFields() {
         Set<Node> tttFields = getAllTicTacToeButtons();
         tttFields.forEach(field -> {
             if(!game.isWonField(field.getId())){

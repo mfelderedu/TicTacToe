@@ -60,10 +60,10 @@ public class Game {
         int counterColumn = 0;
         for (char column = 'a'; column <= 'c'; column++) {
             for (int row = 0; row <= 2; row++) {
-                Field gamefield = gameFields.get(column).get(row); // sieger bestimmen
-                if(gamefield.getSign() == sign) {
+                Field gameField = gameFields.get(column).get(row); // sieger bestimmen
+                if(gameField.getSign() == sign) {
                     counterColumn++;
-                    wonGameFields.add(gamefield);
+                    wonGameFields.add(gameField);
                 } else {
                     counterColumn--;
                 }
@@ -83,10 +83,10 @@ public class Game {
         int counterRow = 0;
         for (int row = 0; row <= 2; row++) {
             for (char column = 'a'; column <= 'c'; column++) {
-                Field gamefield = gameFields.get(column).get(row);
-                if(gamefield.getSign() == sign) {
+                Field gameField = gameFields.get(column).get(row);
+                if(gameField.getSign() == sign) {
                     counterRow++;
-                    wonGameFields.add(gamefield);
+                    wonGameFields.add(gameField);
                 } else {
                     counterRow--;
                 }
@@ -102,7 +102,50 @@ public class Game {
     }
 
     public boolean ifDiagonalSameSign(Sign sign) {
-        int counter = 0;
+        char column1 = 'a';
+        int row1 = 0;
+        int counterDia1 = 0;
+        while (column1 <= 'c' && row1 < 3) {
+            Field gameField = gameFields.get(column1).get(row1);
+            if(gameField.getSign() == sign) {
+                counterDia1++;
+                wonGameFields.add(gameField);
+            } else {
+                if((row1 != 1) && (column1 != 'b')) {
+                    counterDia1--;
+                }
+            }
+            column1++;
+            row1++;
+            if(counterDia1 == 3) {
+                return true;
+            }else {
+                counterDia1 = 0;
+                wonGameFields.clear();
+            }
+        }
+        /*
+        char column2 = 'c';
+        int row2 = 2;
+        int counterDia2 = 0;
+        while (column2 >= 'a' && row2 > 0) {
+            Field gameField = gameFields.get(column2).get(row2);
+            if(gameField.getSign() == sign) {
+                counterDia2++;
+                wonGameFields.add(gameField);
+            } else if((row2 != 1) && (column2 != 'b')) {
+                counterDia2--;
+            }
+            column2--;
+            row2--;
+            if(counterDia2 == 3) {
+                return true;
+            } else {
+                counterDia2 = 0;
+                wonGameFields.clear();
+            }
+        }
+        */
         return false;
     }
 

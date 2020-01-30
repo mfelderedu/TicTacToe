@@ -170,8 +170,17 @@ public class Game {
         initPlayerTurn();
     }
 
+    public Player getActivePlayer() {
+        if (activePlayer == player1) {
+            activePlayer = player2;
+        } else {
+            activePlayer = player1;
+        }
+        return activePlayer;
+    }
+
     public void initPlayerTurn() {
-        activePlayer = player1;
+        activePlayer = getActivePlayer();
     }
 
     private void resetScores() {

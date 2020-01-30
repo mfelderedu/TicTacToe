@@ -102,51 +102,39 @@ public class Game {
     }
 
     public boolean ifDiagonalSameSign(Sign sign) {
-        char column1 = 'a';
-        int row1 = 0;
-        int counterDia1 = 0;
-        while (column1 <= 'c' && row1 < 3) {
-            Field gameField = gameFields.get(column1).get(row1);
-            if(gameField.getSign() == sign) {
-                counterDia1++;
-                wonGameFields.add(gameField);
+            int startRow = 0;
+            int increment = 1;
+
+            int counter = getSignCounter(sign, startRow, increment);
+            if(counter == 3) {
+                return true;
             } else {
-                if((row1 != 1) && (column1 != 'b')) {
-                    counterDia1--;
+                startRow = 2;
+                increment = -1;
+                counter = getSignCounter(sign, startRow, increment);
+                if(counter == 3) {
+                    return true;
                 }
             }
-            column1++;
-            row1++;
-            if(counterDia1 == 3) {
-                return true;
-            }else {
-                counterDia1 = 0;
-                wonGameFields.clear();
-            }
-        }
-        /*
-        char column2 = 'c';
-        int row2 = 2;
-        int counterDia2 = 0;
-        while (column2 >= 'a' && row2 > 0) {
-            Field gameField = gameFields.get(column2).get(row2);
-            if(gameField.getSign() == sign) {
-                counterDia2++;
+            return false;
+    }
+
+    private int getSignCounter(Sign sign, int startRow, int increment) {
+        int row = startRow;
+        char column = 'a';
+        int counter = 0;
+
+        int rowCount = gameFields.get(column).size();
+        while (column <= 'c' && row < rowCount && row >= 0) {
+            Field gameField = gameFields.get(column).get(row);
+            if (gameField.getSign() == sign) {
+                counter++;
                 wonGameFields.add(gameField);
-            } else if((row2 != 1) && (column2 != 'b')) {
-                counterDia2--;
             }
-            column2--;
-            row2--;
-            if(counterDia2 == 3) {
-                return true;
-            } else {
-                counterDia2 = 0;
-                wonGameFields.clear();
-            }
+            column++;
+            row += increment;
         }
-        */
-        return false;
+        return counter;
     }
 
     public void toggleActivePlayer() {

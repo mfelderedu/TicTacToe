@@ -1,3 +1,4 @@
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -46,17 +47,17 @@ public class Presenter implements Initializable {
 
                 if(!clickedField.isOccupied()) {
 
-                    Sign sign = game.getActivePlayerSign();
+                    Sign sign = game.getActivePlayer().getSign();
                     clickedField.setSign(sign);
                     button.setText(String.valueOf(sign.representationCharacter()));
                     if(game.isGameWon(sign)) {
                         showWinnerFields();
                         game.addPointToActivePlayer(); //Punkten zählen
-                        setPlayerWon();
+
                         setPlayersPoints();
                     } else {
                         game.toggleActivePlayer();
-                        String activeName = game.toggleActivePlayerName();
+                        String activeName = game.getActivePlayer().getName();
                         active_playername.setText(activeName);
                     }
                 }
@@ -91,7 +92,7 @@ public class Presenter implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String activeName = game.toggleActivePlayerName();
+        String activeName = game.getActivePlayer().getName();
         active_playername.setText(activeName);
 
         final ObservableList<Node> columns = field.getChildren();
@@ -127,13 +128,12 @@ public class Presenter implements Initializable {
 
     private void resetFields() {
         game.resetFields(); // Logik New Field
-        game.initPlayerTurn();
+        game.toggleActivePlayer();
 
-        String activeName = game.getActivePlayerName();
+        String activeName = game.getActivePlayer().getName();
         active_playername.setText(activeName);
         sign_trophy.setVisible(false);
         sign_active_player.setVisible(true);
-        getAllFieldButtons().forEach(this::resetButton);
 
         resetAllFieldButtons();
     }

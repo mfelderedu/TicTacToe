@@ -15,7 +15,7 @@ public class Game {
         gameFields = generateField();
         wonGameFields = new HashSet<>();
 
-        initPlayerTurn();
+        activePlayer = players.get(0);
     }
 
     public List<Player> getPlayers() {
@@ -149,21 +149,6 @@ public class Game {
         }
     }
 
-    public String toggleActivePlayerName() {
-        String name = activePlayer.getPlayerName();
-        return name;
-    }
-
-    // get the player-icon
-    public Sign getActivePlayerSign() {
-        Sign sign = activePlayer.getSign();
-        return sign;
-    }
-
-    public String getActivePlayerName() {
-        return activePlayer.getPlayerName();
-    }
-
     public void addPointToActivePlayer() {
         activePlayer.incrementScore();
     }
@@ -171,24 +156,13 @@ public class Game {
     public void newGame() {
         resetFields();
         resetScores();
-        initPlayerTurn();
+        toggleActivePlayer();
     }
 
-    public void initPlayerTurn() {
-        activePlayer = players.get(0);
-
     public Player getActivePlayer() {
-        if (activePlayer == players.get(0)) {
-            activePlayer = players.get(1);
-        } else {
-            activePlayer = players.get(0);
-        }
         return activePlayer;
     }
 
-    public void initPlayerTurn() {
-        activePlayer = getActivePlayer();
-    }
 
     public void resetScores() {
         players.get(0).resetScore();

@@ -11,7 +11,7 @@ public class Player {
         this.sign = sign;
     }
 
-    public String getPlayerName() {
+    public String getName() {
         return name;
     }
 

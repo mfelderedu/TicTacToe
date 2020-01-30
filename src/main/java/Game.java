@@ -3,19 +3,23 @@ import java.util.*;
 public class Game {
     private Map<Character, List<Field>> gameFields;
     private Player activePlayer;
-    private Player player1;
-    private Player player2;
+    private List<Player> players = new ArrayList<>();
+
 
     private Set<Field> wonGameFields; // Gewinner
 
     public Game() {
-        player1 = new Player("Spieler 1", Sign.cross);
-        player2 = new Player("Spieler 2", Sign.circle);
+        players.add(new Player("Spieler 1", Sign.cross));
+        players.add(new Player("Spieler 2", Sign.circle));
 
         gameFields = generateField();
         wonGameFields = new HashSet<>();
 
         initPlayerTurn();
+    }
+
+    public List<Player> getPlayers() {
+        return players;
     }
 
     // generate field-cols
@@ -150,10 +154,10 @@ public class Game {
     }
 
     public void toggleActivePlayer() {
-        if (activePlayer == player1) {
-            activePlayer = player2;
+        if (activePlayer == players.get(0)) {
+            activePlayer = players.get(1);
         } else {
-            activePlayer = player1;
+            activePlayer = players.get(0);
         }
     }
 
@@ -173,7 +177,7 @@ public class Game {
     }
 
     public void addPointToActivePlayer() {
-        activePlayer.addPointToScore();
+        activePlayer.incrementScore();
     }
 
     public void newGame() {
@@ -183,12 +187,12 @@ public class Game {
     }
 
     public void initPlayerTurn() {
-        activePlayer = player1;
+        activePlayer = players.get(0);
     }
 
-    private void resetScores() {
-        player1.resetScore();
-        player2.resetScore();
+    public void resetScores() {
+        players.get(0).resetScore();
+        players.get(1).resetScore();
     }
 
     public void resetFields() {
@@ -202,16 +206,12 @@ public class Game {
         wonGameFields.clear();
     }
 
-    public int getPlayerOnePoints() {
-        return player1.getScore();
+    public int getPlayerPoints(int playerNr) {
+        return players.get(playerNr).getScore();
     }
-
-    public int getPlayerTwoPoints() {
-        return player2.getScore();
-    }
-
 
     public boolean isWonField(String fieldId) {
         return wonGameFields.contains(getField(fieldId));
     }
+
 }

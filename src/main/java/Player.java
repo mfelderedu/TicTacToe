@@ -1,7 +1,10 @@
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+
 public class Player {
     private String name;
     private Sign sign;
-    private int score;
+    private IntegerProperty score = new SimpleIntegerProperty(0);
 
     public Player(String name, Sign sign) {
         this.name = name;
@@ -25,14 +28,18 @@ public class Player {
     }
 
     public int getScore() {
-        return score;
+        return score.getValue();
     }
 
-    public void addPointToScore() {
-        score++;
+    public void incrementScore() {
+        score.add(1);
     }
 
     public void resetScore() {
-        score = 0;
+        score.set(0);
+    }
+
+    public IntegerProperty getScoreProperty() {
+        return score;
     }
 }

@@ -1,3 +1,4 @@
+import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -9,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -51,8 +53,8 @@ public class Presenter implements Initializable {
                     if(game.isGameWon(sign)) {
                         showWinnerFields();
                         game.addPointToActivePlayer(); //Punkten zählen
-                        setPlayerWon(game);
-                        setPlayersPoints(game);
+                        setPlayerWon();
+                        setPlayersPoints();
                     } else {
                         game.toggleActivePlayer();
                         String activeName = game.toggleActivePlayerName();
@@ -61,19 +63,15 @@ public class Presenter implements Initializable {
                 }
             }
         };
+
+        List<Player> players = game.getPlayers();
+        players.forEach(player -> {player.getScoreProperty().addListener(this::scoreChangeListener);});
     }
 
-    private void setPlayersPoints(Game game) {
-        player1_points.setText(""+game.getPlayerOnePoints());
-        player2_points.setText(""+game.getPlayerTwoPoints());
+    private void scoreChangeListener(Observable observable) {
+        setPlayersPoints();
     }
 
-    private void setPlayerWon(Game game) {
-        sign_active_player.setVisible(false);
-        sign_trophy.setVisible(true);
-        //Spieler 1 WON! oder Spieler 2 WON!
-        active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
-    }
     private void showWinnerFields() {
         Set<Node> tttFields = getAllTicTacToeButtons();
         tttFields.forEach(field -> {
@@ -81,17 +79,26 @@ public class Presenter implements Initializable {
                 field.setDisable(true);
             }
         });
-
     }
 
-    private Set<Node> getAllTicTacToeButtons() {
-        return field.lookupAll(".ttt-field");
+    private void setPlayersPoints() {
+        player1_points.setText(""+game.getPlayerPoints(0));
+        player2_points.setText(""+game.getPlayerPoints(1));
+    }
+
+    private void setPlayerWon() {
+        sign_active_player.setVisible(false);
+        sign_trophy.setVisible(true);
+        //Spieler 1 WON! oder Spieler 2 WON!
+        active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String activeName = game.toggleActivePlayerName();
         active_playername.setText(activeName);
+
+
 
         final ObservableList<Node> columns = field.getChildren();
         for(Node node : columns) {
@@ -111,42 +118,41 @@ public class Presenter implements Initializable {
 
     }
 
-
-    public void countWins() {
-
-    }
-
-    public void clickOnRestart() {
-
-    }
-
-
-    public void settingButtonHandler(ActionEvent actionEvent) {
-
-    }
-
     private void newFieldButtonHandler(ActionEvent actionEvent) {
-        game.resetFields(); // Logik New Field
-        game.initPlayerTurn();
-        String activeName = game.getActivePlayerName();
-        active_playername.setText(activeName);
-        sign_trophy.setVisible(false);
-        sign_active_player.setVisible(true);
-        getAllTicTacToeButtons().forEach(this::resetButton);
-
-    }
-
-    private void resetButton(Node button) {
-        button.setDisable(false);
-        ((Button)button).setText("");
+        resetFields();
     }
 
     private void exitButtonHandler(ActionEvent actionEvent) {
         main.exit();
     }
     private void newGameButtonHandler(ActionEvent actionEvent){
-        game.newGame();
+        resetFields();
 
-
+        game.resetScores();
     }
+
+    private void resetFields() {
+        game.resetFields(); // Logik New Field
+        game.initPlayerTurn();
+
+        String activeName = game.getActivePlayerName();
+        active_playername.setText(activeName);
+        sign_trophy.setVisible(false);
+        sign_active_player.setVisible(true);
+
+        resetAllFieldButtons();
+    }
+
+    private void resetAllFieldButtons() {
+        getAllTicTacToeButtons().forEach(button -> {
+            button.setDisable(false);
+            ((Button)button).setText("");
+        });
+    }
+
+    private Set<Node> getAllTicTacToeButtons() {
+        return field.lookupAll(".ttt-field");
+    }
+
+
 }

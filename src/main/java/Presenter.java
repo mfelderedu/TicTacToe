@@ -1,4 +1,3 @@
-import javafx.beans.Observable;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -73,10 +72,10 @@ public class Presenter implements Initializable {
     }
 
     private void showWinnerFields() {
-        Set<Node> tttFields = getAllTicTacToeButtons();
-        tttFields.forEach(field -> {
-            if(!game.isWonField(field.getId())){
-                field.setDisable(true);
+        Set<Node> allFieldButtons = getAllFieldButtons();
+        allFieldButtons.forEach(node -> {
+            if(!game.isWonField(node.getId())){
+                node.setDisable(true);
             }
         });
     }
@@ -86,19 +85,14 @@ public class Presenter implements Initializable {
         player2_points.setText(""+game.getPlayerPoints(1));
     }
 
-    private void setPlayerWon() {
-        sign_active_player.setVisible(false);
-        sign_trophy.setVisible(true);
-        //Spieler 1 WON! oder Spieler 2 WON!
-        active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
+    private Set<Node> getAllFieldButtons() {
+        return field.lookupAll(".ttt-field");
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String activeName = game.toggleActivePlayerName();
         active_playername.setText(activeName);
-
-
 
         final ObservableList<Node> columns = field.getChildren();
         for(Node node : columns) {
@@ -139,6 +133,7 @@ public class Presenter implements Initializable {
         active_playername.setText(activeName);
         sign_trophy.setVisible(false);
         sign_active_player.setVisible(true);
+        getAllFieldButtons().forEach(this::resetButton);
 
         resetAllFieldButtons();
     }

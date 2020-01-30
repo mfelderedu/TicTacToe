@@ -75,16 +75,16 @@ public class Presenter implements Initializable {
         active_playername.setText(game.getActivePlayerName()+" WON!"); //76-146 Spieler Name wählen und Won
     }
     private void showWinnerFields() {
-        Set<Node> tttFields = getAllTicTacToeButtons();
-        tttFields.forEach(field -> {
-            if(!game.isWonField(field.getId())){
-                field.setDisable(true);
+        Set<Node> allFieldButtons = getAllFieldButtons();
+        allFieldButtons.forEach(node -> {
+            if(!game.isWonField(node.getId())){
+                node.setDisable(true);
             }
         });
 
     }
 
-    private Set<Node> getAllTicTacToeButtons() {
+    private Set<Node> getAllFieldButtons() {
         return field.lookupAll(".ttt-field");
     }
 
@@ -132,7 +132,7 @@ public class Presenter implements Initializable {
         active_playername.setText(activeName);
         sign_trophy.setVisible(false);
         sign_active_player.setVisible(true);
-        getAllTicTacToeButtons().forEach(this::resetButton);
+        getAllFieldButtons().forEach(this::resetButton);
 
     }
 

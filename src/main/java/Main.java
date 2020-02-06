@@ -39,21 +39,8 @@ public class Main extends Application {
         scene.getStylesheets().add("style.css");
 
         // Icon
-        String OS = System.getProperty("os.name").toLowerCase();
-        /*
-        if(OS.startsWith("mac")) {
-            System.getProperties().list(System.out);
-            try {
-                URL iconURL = Main.class.getResource("icon.png");
-                java.awt.Image image = new ImageIcon(iconURL).getImage();
-                com.apple.eawt.Application.getApplication().setDockIconImage(image);
-            } catch (Exception e) {
-            }
+        primaryStage.getIcons().add(new Image("icon.png"));
 
-        } else {
-            primaryStage.getIcons().add(new Image("icon.png"));
-        }
-        */
         Image systemIcon = new Image("icon.png");
         primaryStage.getIcons().add(systemIcon);
 

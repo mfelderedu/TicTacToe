@@ -15,16 +15,8 @@ public class Player {
         return name;
     }
 
-    public void setPlayerName(String name) {
-        this.name = name;
-    }
-
     public Sign getSign() {
         return sign;
-    }
-
-    public void setPlayerSign(Sign sign) {
-        this.sign = sign;
     }
 
     public int getScore() {

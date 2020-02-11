@@ -47,7 +47,7 @@ public class Presenter implements Initializable {
 
 
     private EventHandler<ActionEvent> fieldClickHandler;
-    private boolean IS_COMPUTER_PLAYER = false;
+    private boolean IS_COMPUTER_PLAYER;
 
     public Presenter(Game game, Main main) {
 
@@ -223,15 +223,14 @@ public class Presenter implements Initializable {
 
     private void getGameMode() {
         String gameMode = selectGameMode();
-        /*
+
         if (gameMode == "2"){
             IS_COMPUTER_PLAYER = false;
-            game.getPlayerTwoName(2);
+            //game.getPlayerTwoName(2);
         } else {
             IS_COMPUTER_PLAYER = true;
-            game.getPlayerTwoName(1);
+            //game.getPlayerTwoName(1);
         }
-         */
     }
 
     private void resetFields() {

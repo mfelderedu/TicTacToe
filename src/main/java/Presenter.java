@@ -28,6 +28,10 @@ public class Presenter implements Initializable {
     private Text player1_points;
     @FXML
     private Text player2_points;
+    @FXML
+    private Text player1_name;
+    @FXML
+    private Text player2_name;
 
     @FXML
     private GridPane field;
@@ -119,12 +123,18 @@ public class Presenter implements Initializable {
         return columns.get(random.nextInt(columns.size()));
     }
 
+    /**
+     *
+     * Spielmodusfeld erstellen
+     */
     private String selectGameMode() {
         ChoiceDialog choice = new ChoiceDialog();
         choice.setHeaderText("Anzahl Spieler");
         choice.setTitle("Bitte Anzahl Spieler auswählen");
+
         choice.getItems().add("1");
         choice.getItems().add("2");
+        choice.getDefaultChoice();
 
         Optional<String> result = choice.showAndWait();
         return result.orElse(null);
@@ -213,12 +223,15 @@ public class Presenter implements Initializable {
 
     private void getGameMode() {
         String gameMode = selectGameMode();
-
+        /*
         if (gameMode == "2"){
             IS_COMPUTER_PLAYER = false;
+            game.getPlayerTwoName(2);
         } else {
             IS_COMPUTER_PLAYER = true;
+            game.getPlayerTwoName(1);
         }
+         */
     }
 
     private void resetFields() {

@@ -3,6 +3,7 @@ import java.util.*;
 public class Game {
     private Map<Character, List<Field>> gameFields;
     private Player activePlayer;
+    private String playerTwoName;
     private List<Player> players = new ArrayList<>();
 
 
@@ -20,6 +21,14 @@ public class Game {
 
     public List<Player> getPlayers() {
         return players;
+    }
+
+    public void getPlayerTwoName(int gameMode) {
+        if(gameMode == 1) {
+            playerTwoName = "Computer";
+        } else {
+            playerTwoName = "Spieler 2";
+        }
     }
 
     // generate field-cols

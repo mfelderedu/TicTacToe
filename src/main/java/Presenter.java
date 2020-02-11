@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.control.ChoiceDialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -43,7 +43,7 @@ public class Presenter implements Initializable {
 
 
     private EventHandler<ActionEvent> fieldClickHandler;
-    private static final boolean IS_COMPUTER_PLAYER = false;
+    private boolean IS_COMPUTER_PLAYER = false;
 
     public Presenter(Game game, Main main) {
 
@@ -119,6 +119,18 @@ public class Presenter implements Initializable {
         return columns.get(random.nextInt(columns.size()));
     }
 
+    private String selectGameMode() {
+        ChoiceDialog choice = new ChoiceDialog();
+        choice.setHeaderText("Anzahl Spieler");
+        choice.setTitle("Bitte Anzahl Spieler auswählen");
+        choice.getItems().add("1");
+        choice.getItems().add("2");
+
+        Optional<String> result = choice.showAndWait();
+        return result.orElse(null);
+    }
+
+
     private void setClickedField(Button button, Field clickedField) {
         if (!clickedField.isOccupied()) {
 
@@ -165,6 +177,8 @@ public class Presenter implements Initializable {
         String activeName = game.getActivePlayer().getName();
         active_playername.setText(activeName);
 
+        getGameMode();
+
         final ObservableList<Node> columns = field.getChildren();
         for (Node node : columns) {
             GridPane column = (GridPane) node;
@@ -193,8 +207,18 @@ public class Presenter implements Initializable {
 
     private void newGameButtonHandler(ActionEvent actionEvent) {
         resetFields();
-
+        getGameMode();
         game.resetScores();
+    }
+
+    private void getGameMode() {
+        String gameMode = selectGameMode();
+
+        if (gameMode == "2"){
+            IS_COMPUTER_PLAYER = false;
+        } else {
+            IS_COMPUTER_PLAYER = true;
+        }
     }
 
     private void resetFields() {

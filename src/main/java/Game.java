@@ -179,6 +179,10 @@ public class Game {
 
         wonGameFields.clear();
     }
+    public Map<Character, List<Field>> getGameFields() {
+        return gameFields;
+    }
+
 
     public int getPlayerPoints(int playerNr) {
         return players.get(playerNr).getScore();

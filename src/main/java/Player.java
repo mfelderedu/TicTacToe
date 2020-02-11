@@ -24,7 +24,8 @@ public class Player {
     }
 
     public void incrementScore() {
-        score.add(1);
+        score.setValue(score.getValue()+1);
+        //score.add(1);
     }
 
     public void resetScore() {

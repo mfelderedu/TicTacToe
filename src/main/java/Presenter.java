@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextInputDialog;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 
@@ -42,7 +43,7 @@ public class Presenter implements Initializable {
 
 
     private EventHandler<ActionEvent> fieldClickHandler;
-    private static final boolean IS_COMPUTER_PLAYER = true;
+    private static final boolean IS_COMPUTER_PLAYER = false;
 
     public Presenter(Game game, Main main) {
 
@@ -65,7 +66,6 @@ public class Presenter implements Initializable {
         players.forEach(player -> {
             player.getScoreProperty().addListener(this::scoreChangeListener);
         });
-
 
     }
 
@@ -127,7 +127,7 @@ public class Presenter implements Initializable {
             button.setText(String.valueOf(sign.representationCharacter()));
             if (game.isGameWon(sign)) {
                 showWinnerFields();
-                game.addPointToActivePlayer(); //Punkten zählen
+                game.addPointToActivePlayer(); //Punkte zählen
 
                 setPlayersPoints();
             } else {
